@@ -7,15 +7,15 @@ CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
-    canbus.h \
-    inversekinematics.h
+    include/canbus.h \
+    include/inversekinematics.h
 
 SOURCES += \
-        canbus.cpp \
-        inversekinematics.cpp \
-        main.cpp
+        src/canbus.cpp \
+        src/inversekinematics.cpp \
+        src/main.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml/qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
