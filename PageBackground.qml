@@ -22,11 +22,12 @@ Rectangle {
          font.family: "Arial"
          styleColor: "#ee1111"
          font.pointSize: 21
+         visible: false
      }
      Rectangle {
          id: rectangle1
          x: -86
-         y: 418
+         y: 368
          width: 100
          height: 200
          color: "#3a3a3a"
@@ -35,16 +36,10 @@ Rectangle {
      Rectangle {
          id: rectangle3
          x: 786
-         y: 418
+         y: 368
          width: 100
          height: 200
          color: "#3a3a3a"
          rotation: 135
      }
 }
-
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.33}
-}
-##^##*/

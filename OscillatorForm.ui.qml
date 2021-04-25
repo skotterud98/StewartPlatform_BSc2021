@@ -1,11 +1,10 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.0
-import QtQuick.Controls.Styles 1.4
 
 PageBackground {
     width: 800
-    height: 480
+    height: 430
     property alias tfreqSlider: tfreqSlider
     property alias rfreqSlider: rfreqSlider
     property alias yawSlider: yawSlider
@@ -21,8 +20,8 @@ PageBackground {
     //Trans freq
     Slider {
         id: tfreqSlider
-        x: 475
-        y: 174
+        x: 476
+        y: 143
         width: 259
         height: 38
         stepSize: 0.1
@@ -63,8 +62,8 @@ PageBackground {
 
     Button {
         id: startButton
-        x: 69
-        y: 390
+        x: 80
+        y: 357
         width: 131
         height: 55
         objectName: "start"
@@ -76,8 +75,8 @@ PageBackground {
 
     Button {
         id: stopButton
-        x: 252
-        y: 390
+        x: 277
+        y: 357
         width: 131
         height: 55
         objectName: "stop"
@@ -93,28 +92,32 @@ PageBackground {
 
     Label {
         id: label6
-        x: 563
-        y: 346
+        x: 564
+        y: 298
         color: "#f2f2f3"
         text: qsTr("TRANS FREQ")
+        font.bold: true
+        renderType: Text.QtRendering
+        textFormat: Text.AutoText
         font.family: "Arial"
         font.pointSize: 10
     }
 
     Label {
         id: label7
-        x: 664
-        y: 346
+        x: 665
+        y: 298
         color: "#f4f4f5"
         text: qsTr("ROT FREQ")
+        font.bold: true
         font.family: "Arial"
         font.pointSize: 10
     }
 //Rot freq
     Slider {
         id: rfreqSlider
-        x: 567
-        y: 175
+        x: 568
+        y: 143
         width: 259
         height: 38
         stepSize: 0.1
@@ -149,8 +152,8 @@ PageBackground {
  //Yaw
     Slider {
         id: yawSlider
-        x: 315
-        y: 176
+        x: 313
+        y: 143
         width: 259
         height: 38
         stepSize: 0.1
@@ -185,8 +188,8 @@ PageBackground {
 //Pitch
     Slider {
         id: pitchSlider
-        x: 240
-        y: 177
+        x: 237
+        y: 144
         width: 259
         height: 38
         stepSize: 0.1
@@ -223,8 +226,8 @@ PageBackground {
 //Roll
     Slider {
         id: rollSlider
-        x: 165
-        y: 178
+        x: 164
+        y: 143
         width: 259
         height: 38
         stepSize: 0.1
@@ -259,8 +262,8 @@ PageBackground {
 //Heave
     Slider {
         id: heaveSlider
-        x: 90
-        y: 179
+        x: 87
+        y: 143
         width: 259
         height: 38
         stepSize: 0.1
@@ -296,7 +299,7 @@ PageBackground {
     Slider {
         id: swaySlider
         x: 15
-        y: 180
+        y: 143
         width: 259
         height: 38
         stepSize: 0.1
@@ -331,8 +334,8 @@ PageBackground {
 //Surge
     Slider {
         id: surgeSlider
-        x: -60
-        y: 179
+        x: -61
+        y: 142
         width: 259
         height: 38
         snapMode: Slider.SnapOnRelease
@@ -369,20 +372,22 @@ PageBackground {
 
     Label {
         id: label
-        x: 45
-        y: 346
+        x: 46
+        y: 298
         color: "#f6f7f7"
         text: qsTr("SURGE")
+        font.bold: true
         font.family: "Arial"
         font.pointSize: 10
     }
 
     Label {
         id: label1
-        x: 125
-        y: 346
+        x: 127
+        y: 298
         color: "#fbfbfb"
         text: qsTr("SWAY")
+        font.bold: true
         font.family: "Arial"
         font.pointSize: 10
     }
@@ -390,46 +395,46 @@ PageBackground {
     Label {
         id: label2
         x: 195
-        y: 346
+        y: 298
         color: "#f9f9f9"
         text: qsTr("HEAVE")
+        font.bold: true
         font.family: "Arial"
         font.pointSize: 10
     }
 
     Label {
         id: label3
-        x: 276
-        y: 346
+        x: 277
+        y: 298
         color: "#f6f7f7"
         text: qsTr("ROLL")
+        font.bold: true
         font.family: "Arial"
         font.pointSize: 10
     }
 
     Label {
         id: label4
-        x: 347
-        y: 346
+        x: 348
+        y: 298
         color: "#f6f7f7"
         text: qsTr("PITCH")
+        font.bold: true
         font.family: "Arial"
         font.pointSize: 10
     }
 
     Label {
         id: label5
-        x: 428
-        y: 346
+        x: 429
+        y: 298
+        width: 29
+        height: 15
         color: "#f4f4f5"
         text: qsTr("YAW")
+        font.bold: true
         font.family: "Arial"
         font.pointSize: 10
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.75}
-}
-##^##*/

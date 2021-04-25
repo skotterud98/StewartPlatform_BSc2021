@@ -9,47 +9,85 @@ ApplicationWindow {
     height: 480
 
     header: ToolBar {
-        contentHeight: toolButton.implicitHeight
+        contentHeight: toolButton.height
+        background: Rectangle
+        {
+            height: parent.height
+            color: "#1a1a1a"
+        }
 
-        ToolButton {
+        ToolButton
+        {
             id: toolButton
             text: stackView.depth > 1 ? "\u25C0" : "\u2630"
-            font.pixelSize: Qt.application.font.pixelSize * 1.6
+            font.pixelSize: Qt.application.font.pixelSize * 2
+            height: 50
+            background: Rectangle
+            {
+                color: "#1a1a1a"
+            }
+
             onClicked: {
-                if (stackView.depth > 1) {
+                if (stackView.depth > 1)
+                {
                     stackView.pop()
-                } else {
+                }
+                else
+                {
                     drawer.open()
                 }
             }
         }
 
-        Label {
+        Label
+        {
             text: stackView.currentItem.title
             anchors.centerIn: parent
+            color: "#db6221"
         }
     }
 
-    Drawer {
+    Drawer
+    {
         id: drawer
         width: window.width * 0.15
         height: window.height
+        background: Rectangle
+        {
+            color: "#1a1a1a"
+        }
 
-        Column {
+        Column
+        {
             anchors.fill: parent
 
-            ItemDelegate {
+            ItemDelegate
+            {
+                id: oscillatorDelegate
                 text: qsTr("Oscillator")
                 width: parent.width
-                onClicked: {
+                contentItem: Text {
+                    text: oscillatorDelegate.text
+                    color: "#db6221"
+                }
+                background: Rectangle {
+                    height: parent.height
+                    width: parent.width
+                    color: oscillatorDelegate.down ? "dimgrey" : "#1a1a1a"
+                }
+
+                onClicked:
+                {
                     stackView.push("Oscillator.qml")
                     drawer.close()
                 }
             }
-            ItemDelegate {
+            ItemDelegate
+            {
                 text: qsTr("Page 2")
                 width: parent.width
-                onClicked: {
+                onClicked:
+                {
                     stackView.push("Page2Form.ui.qml")
                     drawer.close()
                 }
@@ -57,7 +95,8 @@ ApplicationWindow {
         }
     }
 
-    StackView {
+    StackView
+    {
         id: stackView
         initialItem: "HomeForm.ui.qml"
         anchors.fill: parent

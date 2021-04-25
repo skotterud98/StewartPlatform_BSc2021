@@ -3,7 +3,8 @@ import QtQuick.Controls 2.12
 
 PageBackground {
     width: 800
-    height: 480
+    height: 430
+    color: "#1a1a1a"
 
     title: "Home"
 
@@ -79,29 +80,14 @@ PageBackground {
         font.pointSize: 15
     }
 
-    Rectangle {
-        id: rectangle4
-        x: 294
-        y: 344
-        width: 145
-        height: 45
-        color: "#3a3a3a"
-    }
-
-    Label {
-        id: label4
-        x: 127
-        y: 352
-        color: "#db6221"
-        text: qsTr("Placeholder2:")
-        font.pointSize: 15
-    }
     Image {
-    source: "pics/SP.png"
-    width: 200
-    height: 220
-    x: 513
-    y: 120
+        id: image
+        x: 110
+        y: 368
+        width: 581
+        height: 54
+        source: "pics/Faculty-of-Engineering-and-Science-negative.png"
+        fillMode: Image.PreserveAspectFit
     }
 
 }

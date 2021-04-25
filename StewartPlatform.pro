@@ -1,4 +1,4 @@
-QT += quick
+QT +=   quick
 
 CONFIG += c++11
 
@@ -6,7 +6,12 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 DEFINES += QT_DEPRECATED_WARNINGS
 
+HEADERS += \
+    canbus.h \
+    inversekinematics.h
+
 SOURCES += \
+        canbus.cpp \
         inversekinematics.cpp \
         main.cpp
 
@@ -18,13 +23,7 @@ QML_IMPORT_PATH =
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
 
-# Default rules for deployment.
-#qnx: target.path = /tmp/$${TARGET}/bin
-#else: unix:!android: target.path = /opt/$${TARGET}/bin
-#!isEmpty(target.path): INSTALLS += target
+INCLUDEPATH +=  /usr/include/eigen3
 
 target.path = /home/pi/StewartPlatform/bin
 INSTALLS += target
-
-HEADERS += \
-    inversekinematics.h
