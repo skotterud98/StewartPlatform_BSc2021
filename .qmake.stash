@@ -1,0 +1,27 @@
+QMAKE_CXX.QT_COMPILER_STDCXX = 201402L
+QMAKE_CXX.QMAKE_GCC_MAJOR_VERSION = 7
+QMAKE_CXX.QMAKE_GCC_MINOR_VERSION = 4
+QMAKE_CXX.QMAKE_GCC_PATCH_VERSION = 1
+QMAKE_CXX.COMPILER_MACROS = \
+    QT_COMPILER_STDCXX \
+    QMAKE_GCC_MAJOR_VERSION \
+    QMAKE_GCC_MINOR_VERSION \
+    QMAKE_GCC_PATCH_VERSION
+QMAKE_CXX.INCDIRS = \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1 \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/arm-linux-gnueabihf \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/backward \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include-fixed \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include/arm-linux-gnueabihf \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include
+QMAKE_CXX.LIBDIRS = \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1 \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/lib \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/lib/arm-linux-gnueabihf \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/lib \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/lib/arm-linux-gnueabihf \
+    /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/lib

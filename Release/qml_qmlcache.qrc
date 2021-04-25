@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">../main.qml</file>
+        <file alias="HomeForm.ui.qml">../HomeForm.ui.qml</file>
+        <file alias="qtquickcontrols2.conf">../qtquickcontrols2.conf</file>
+        <file alias="OscillatorForm.ui.qml">../OscillatorForm.ui.qml</file>
+        <file alias="PageBackground.qml">../PageBackground.qml</file>
+        <file alias="Oscillator.qml">../Oscillator.qml</file>
+        <file alias="pics/SP.png">../pics/SP.png</file>
+    </qresource>
+</RCC>
