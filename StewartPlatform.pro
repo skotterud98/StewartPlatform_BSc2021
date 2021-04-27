@@ -1,19 +1,23 @@
 QT +=   quick
 
-CONFIG += c++11
+CONFIG +=   c++11
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
-    include/canbus.h \
-    include/inversekinematics.h
+        canbus.h \
+        inversekinematics.h \
+        oscillator.h \
+        thread.h
 
 SOURCES += \
-        src/canbus.cpp \
-        src/inversekinematics.cpp \
-        src/main.cpp
+        canbus.cpp \
+        inversekinematics.cpp \
+        main.cpp \
+        oscillator.cpp \
+        thread.cpp
 
 RESOURCES += qml/qml.qrc
 

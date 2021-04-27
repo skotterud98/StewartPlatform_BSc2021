@@ -1,32 +1,45 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.0
 
-OscillatorForm{
+OscillatorForm
+{
+    freqButton.onClicked: {
+        oscillator_.set_freq()
+        surgeSlider.stepSize = 0.1
+    }
+    phaseButton.onClicked: {
+        oscillator_.set_phase()
+    }
+    ampButton.onClicked: {
+        oscillator_.set_amp()
+    }
 
     //Slider signals to Cpp back-end
-    tfreqSlider.onValueChanged: {
-        oscillator.set_trans_freq(tfreqSlider.value)
-    }
-    rfreqSlider.onValueChanged: {
-        oscillator.set_rot_freq(rfreqSlider.value)
-    }
     surgeSlider.onValueChanged: {
-        oscillator.set_surge_A(surgeSlider.value)
+        oscillator_.set_surge(surgeSlider.value)
     }
     swaySlider.onValueChanged: {
-        oscillator.set_sway_A(swaySlider.value)
+        oscillator_.set_sway(swaySlider.value)
     }
     heaveSlider.onValueChanged: {
-        oscillator.set_heave_A((heaveSlider.value))
+        oscillator_.set_heave((heaveSlider.value))
     }
     rollSlider.onValueChanged: {
-        oscillator.set_roll_A(rollSlider.value)
+        oscillator_.set_roll(rollSlider.value)
     }
     pitchSlider.onValueChanged: {
-        oscillator.set_pitch_A(pitchSlider.value)
+        oscillator_.set_pitch(pitchSlider.value)
     }
     yawSlider.onValueChanged: {
-        oscillator.set_yaw_A(yawSlider.value)
+        oscillator_.set_yaw(yawSlider.value)
+    }
+
+    Connections {
+        target: oscillator_
+        onSurge_changed: surgeTxt.text = param_value
+        onSway_changed: swayTxt.text = param_value
+        onHeave_changed: heaveTxt.text = param_value
+        onRoll_changed: rollTxt.text = param_value
+        onPitch_changed: pitchTxt.text = param_value
+        onYaw_changed: yawTxt.text = param_value
     }
 }

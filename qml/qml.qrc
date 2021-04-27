@@ -5,9 +5,9 @@
         <file>qtquickcontrols2.conf</file>
         <file>OscillatorForm.ui.qml</file>
         <file>PageBackground.qml</file>
-        <file>Oscillator.qml</file>
         <file>pics/SP.png</file>
         <file>pics/Faculty-of-Engineering-and-Science-positive.png</file>
         <file>pics/Faculty-of-Engineering-and-Science-negative.png</file>
+        <file>Oscillator.qml</file>
     </qresource>
 </RCC>

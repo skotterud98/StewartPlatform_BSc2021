@@ -6,7 +6,7 @@ Rectangle {
      Material.theme: Material.Dark
      Material.accent: Material.DeepOrange
      width: 800
-     height: 480
+     height: 430
      color: "#1a1a1a"
      clip: true
      property alias title: label.text
