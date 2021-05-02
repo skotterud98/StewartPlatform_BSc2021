@@ -1,115 +1,200 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.5
-import QtQuick.Controls.Material 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
-ApplicationWindow {
-    id: window
-    visible: true
+
+Page {
+    id: mainwindow
     width: 800
     height: 480
+    visible: true
 
     header: ToolBar {
-        contentHeight: toolButton.height
-        background: Rectangle
-        {
-            height: parent.height
+        contentHeight: toolButton.implicitHeight
+        background: Rectangle {
+            anchors.fill: parent
             color: "#1a1a1a"
         }
 
-        ToolButton
-        {
+        ToolButton {
             id: toolButton
             text: stackView.depth > 1 ? "\u25C0" : "\u2630"
-            font.pixelSize: Qt.application.font.pixelSize * 2
+            font.pixelSize: Qt.application.font.pixelSize * 2.5
             height: 50
-            background: Rectangle
-            {
-                color: "#1a1a1a"
+            background: Rectangle {
+                color: "#3a3a3a"
+                opacity: 0.8
             }
 
             onClicked: {
-                if (stackView.depth > 1)
-                {
+                if (stackView.depth > 1) {
                     stackView.pop()
-                }
-                else
-                {
+                } else {
                     drawer.open()
                 }
             }
         }
 
-        Label
-        {
+        Label {
             text: stackView.currentItem.title
-            anchors.centerIn: parent
+            font.pixelSize: 25
+            font.bold: true
+            font.italic: true
             color: "#db6221"
+            anchors.centerIn: parent
         }
     }
 
-    Drawer
-    {
+    Drawer {
         id: drawer
-        width: window.width * 0.15
-        height: window.height
-        background: Rectangle
-        {
+        width: mainwindow.width * 0.23
+        height: mainwindow.height
+        background: Rectangle {
             color: "#1a1a1a"
+            anchors.fill: parent
         }
+        dragMargin: 0
 
-        Column
-        {
+        Column {
             anchors.fill: parent
 
-            ItemDelegate
-            {
+            ItemDelegate {
                 id: oscillatorDelegate
-                text: qsTr("Oscillator")
+                text: "Sine Oscillator"
                 width: parent.width
                 contentItem: Text {
                     text: oscillatorDelegate.text
+                    font.italic: true
+                    font.bold: true
+                    font.pixelSize: 17
                     color: "#db6221"
                 }
                 background: Rectangle {
-                    height: parent.height
-                    width: parent.width
+                    anchors.fill: parent
                     color: oscillatorDelegate.down ? "dimgrey" : "#1a1a1a"
                 }
 
-                onClicked:
-                {
-                    stackView.push("Oscillator.qml")
+                onClicked: {
+                    if(stackView.currentItem.title !== oscillatorDelegate.text)
+                        stackView.push("qrc:/qml/SineOscillator.qml")
                     drawer.close()
                 }
             }
-            ItemDelegate
-            {
-                text: qsTr("Page 2")
+            ItemDelegate {
+                id: joystickDelegate
+                text: qsTr("Joystick")
                 width: parent.width
-                onClicked:
-                {
-                    stackView.push("Page2Form.ui.qml")
+                contentItem: Text {
+                    text: joystickDelegate.text
+                    font.italic: true
+                    font.bold: true
+                    font.pixelSize: 17
+                    color: "#db6221"
+                }
+                background: Rectangle {
+                    anchors.fill: parent
+                    color: joystickDelegate.down ? "dimgrey" : "#1a1a1a"
+                }
+
+                onClicked: {
+                    if(stackView.currentItem.title !== joystickDelegate.text)
+                        stackView.push("qrc:/qml/Joystick.qml")
+                    drawer.close()
+                }
+            }
+            ItemDelegate {
+                id: waveSimDelegate
+                text: "Wave Simulator"
+                width: parent.width
+                contentItem: Text {
+                    text: waveSimDelegate.text
+                    font.italic: true
+                    font.bold: true
+                    font.pixelSize: 17
+                    color: "#db6221"
+                }
+                background: Rectangle {
+                    anchors.fill: parent
+                    color: waveSimDelegate.down ? "dimgrey" : "#1a1a1a"
+                }
+
+                onClicked: {
+                    if(stackView.currentItem.title !== waveSimDelegate.text)
+                        stackView.push("qrc:/qml/WaveSimulator.qml")
+                    drawer.close()
+                }
+            }
+            ItemDelegate {
+                id: graphsDelegate
+                text: "Input Plot"
+                width: parent.width
+                contentItem: Text {
+                    text: graphsDelegate.text
+                    font.italic: true
+                    font.bold: true
+                    font.pixelSize: 17
+                    color: "#db6221"
+                }
+                background: Rectangle {
+                    anchors.fill: parent
+                    color: graphsDelegate.down ? "dimgrey" : "#1a1a1a"
+                }
+
+                onClicked: {
+                    if(stackView.currentItem.title !== graphsDelegate.text)
+                        stackView.push("qrc:/qml/InputPlot.qml")
+                    drawer.close()
+                }
+            }
+            ItemDelegate {
+                id: strokePlotDelegate
+                text: "Stroke Plot"
+                width: parent.width
+                contentItem: Text {
+                    text: strokePlotDelegate.text
+                    font.italic: true
+                    font.bold: true
+                    font.pixelSize: 17
+                    color: "#db6221"
+                }
+                background: Rectangle {
+                    anchors.fill: parent
+                    color: strokePlotDelegate.down ? "dimgrey" : "#1a1a1a"
+                }
+
+                onClicked: {
+                    if(stackView.currentItem.title !== strokePlotDelegate.text)
+                        stackView.push("qrc:/qml/StrokePlot.qml")
+                    drawer.close()
+                }
+            }
+            ItemDelegate {
+                id: infoDelegate
+                text: "Info"
+                width: parent.width
+                contentItem: Text {
+                    text: infoDelegate.text
+                    font.italic: true
+                    font.bold: true
+                    font.pixelSize: 17
+                    color: "#db6221"
+                }
+                background: Rectangle {
+                    anchors.fill: parent
+                    color: infoDelegate.down ? "dimgrey" : "#1a1a1a"
+                }
+
+                onClicked: {
+                    if(stackView.currentItem.title !== infoDelegate.text)
+                        stackView.push("qrc:/qml/Info.qml")
                     drawer.close()
                 }
             }
         }
     }
 
-    StackView
-    {
+    StackView {
         id: stackView
-        initialItem: "HomeForm.ui.qml"
+        initialItem: "qrc:/qml/Home.qml"
         anchors.fill: parent
     }
 }
-
-
-
-
-
-
-
-
-
-
-

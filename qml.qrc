@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Components/BackgroundPage.qml</file>
+        <file>qml/Components/MySlider.qml</file>
+        <file>qml/Components/MySwitch.qml</file>
+        <file>qml/Components/MyTabButton.qml</file>
+        <file>qml/images/Faculty-of-Engineering-and-Science-negative.png</file>
+        <file>qml/images/Faculty-of-Engineering-and-Science-positive.png</file>
+        <file>qml/Home.qml</file>
+        <file>qml/Info.qml</file>
+        <file>qml/Joystick.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/qtquickcontrols2.conf</file>
+        <file>qml/SineOscillator.qml</file>
+        <file>qml/StrokePlot.qml</file>
+        <file>qml/InputPlot.qml</file>
+        <file>qml/WaveSimulator.qml</file>
+        <file>qml/Components/MyButton.qml</file>
+    </qresource>
+</RCC>

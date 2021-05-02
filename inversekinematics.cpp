@@ -27,29 +27,30 @@ InverseKinematics::InverseKinematics() :
 }
 
 
-void InverseKinematics::calc_output(std::vector<std::vector<double>>& output, const double pose[], const double _twist[])
+void InverseKinematics::calc_output(Eigen::Matrix<double, 2, 6>& _input)
 {
     static Eigen::Vector3d p;
     static double phi_sin, phi_cos, theta_sin, theta_cos, psi_sin, psi_cos;
     static Eigen::Matrix3d R_x, R_y, R_z, R;
     static Eigen::Matrix<double, 6, 1> twist;
 
-    twist << _twist[0], _twist[1], _twist[2], _twist[3], _twist[4], _twist[5];
+    // Twist vector
+    twist << _input(VEL, 0), _input(VEL, 1), _input(VEL, 2), _input(VEL, 3), _input(VEL, 4), _input(VEL, 5);
 
     // Position vector (x, y, z)
-    p <<    pose[0],
-            pose[1],
-            this->z_min + pose[2];
+    p <<    _input(POS, 0),                     // Surge
+            _input(POS, 1),                     // Sway
+            this->z_min + _input(POS, 2);       // Heave
 
-    // Calculating sin and cos values for the rotation
-    phi_sin = sin(pose[3]);     // Roll
-    phi_cos = cos(pose[3]);
+    // Sin and cos values
+    phi_sin = sin(_input(POS, 3));              // Roll
+    phi_cos = cos(_input(POS, 3));
 
-    theta_sin = sin(pose[4]);   // Pitch
-    theta_cos = cos(pose[4]);
+    theta_sin = sin(_input(POS, 4));            // Pitch
+    theta_cos = cos(_input(POS, 4));
 
-    psi_sin = sin(pose[5]);     // Yaw
-    psi_cos = cos(pose[5]);
+    psi_sin = sin(_input(POS, 5));              // Yaw
+    psi_cos = cos(_input(POS, 5));
 
 
     // Rotation matrices for each axis of rotation
@@ -69,7 +70,7 @@ void InverseKinematics::calc_output(std::vector<std::vector<double>>& output, co
     R = R_z * R_y * R_x;
 
 
-    // Calculate leg vectors
+    // Leg vectors
     static Eigen::Vector3d s1, s2, s3, s4, s5, s6;
 
     s1 = p + (R * this->b1) - this->a1;
@@ -80,7 +81,7 @@ void InverseKinematics::calc_output(std::vector<std::vector<double>>& output, co
     s6 = p + (R * this->b6) - this->a6;
 
 
-    // Calculate leg lengths (leg vector magnitude)
+    // Leg lengths (leg vector magnitude)
     static double l1, l2, l3, l4, l5, l6;
 
     l1 = s1.norm();
@@ -92,8 +93,6 @@ void InverseKinematics::calc_output(std::vector<std::vector<double>>& output, co
 
 
     // Actuator stroke
-    static double d1, d2, d3, d4, d5, d6;
-
     d1 = l1 - this->l_min;
     d2 = l2 - this->l_min;
     d3 = l3 - this->l_min;
@@ -127,6 +126,7 @@ void InverseKinematics::calc_output(std::vector<std::vector<double>>& output, co
     static Eigen::Matrix<double, 6, 1> d_dot;
     d_dot = J * twist;
 
+    /*
     // Outputs
     output[POS][0] = d1;
     output[POS][1] = d2;
@@ -134,11 +134,11 @@ void InverseKinematics::calc_output(std::vector<std::vector<double>>& output, co
     output[POS][3] = d4;
     output[POS][4] = d5;
     output[POS][5] = d6;
+    */
 
-    for (int i = 0; i < 6; i++)
-    {
-        output[VEL][i] = d_dot[i];
-    }
+    _input <<   d1,         d2,         d3,         d4,         d5,         d6,
+                d_dot[0],   d_dot[1],   d_dot[2],   d_dot[3],   d_dot[4],   d_dot[5];
+
 }
 
 

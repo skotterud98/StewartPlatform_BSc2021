@@ -3,31 +3,79 @@
 #include <QtCore/qurl.h>
 
 namespace QmlCacheGeneratedCode {
-namespace _0x5f__main_qml { 
+namespace _qml_SineOscillator_qml { 
     extern const unsigned char qmlData[];
     const QQmlPrivate::CachedQmlUnit unit = {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
     };
 }
-namespace _0x5f__PageBackground_qml { 
+namespace _qml_Components_MyButton_qml { 
     extern const unsigned char qmlData[];
     const QQmlPrivate::CachedQmlUnit unit = {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
     };
 }
-namespace _0x5f__Oscillator_qml { 
+namespace _qml_Components_MySlider_qml { 
     extern const unsigned char qmlData[];
     const QQmlPrivate::CachedQmlUnit unit = {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
     };
 }
-namespace _0x5f__OscillatorForm_ui_0x2e_qml { 
+namespace _qml_Components_MyTabButton_qml { 
     extern const unsigned char qmlData[];
     const QQmlPrivate::CachedQmlUnit unit = {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
     };
 }
-namespace _0x5f__HomeForm_ui_0x2e_qml { 
+namespace _qml_Joystick_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _qml_WaveGraph_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _qml_Info_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _qml_Home_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _qml_main_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _qml_WaveSimulator_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _qml_Components_MySwitch_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _qml_StrokePlot_qml { 
+    extern const unsigned char qmlData[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
+    };
+}
+namespace _qml_Components_BackgroundPage_qml { 
     extern const unsigned char qmlData[];
     const QQmlPrivate::CachedQmlUnit unit = {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), nullptr, nullptr
@@ -47,11 +95,19 @@ Q_GLOBAL_STATIC(Registry, unitRegistry)
 
 
 Registry::Registry() {
-        resourcePathToCachedUnit.insert(QStringLiteral("/main.qml"), &QmlCacheGeneratedCode::_0x5f__main_qml::unit);
-        resourcePathToCachedUnit.insert(QStringLiteral("/PageBackground.qml"), &QmlCacheGeneratedCode::_0x5f__PageBackground_qml::unit);
-        resourcePathToCachedUnit.insert(QStringLiteral("/Oscillator.qml"), &QmlCacheGeneratedCode::_0x5f__Oscillator_qml::unit);
-        resourcePathToCachedUnit.insert(QStringLiteral("/OscillatorForm.ui.qml"), &QmlCacheGeneratedCode::_0x5f__OscillatorForm_ui_0x2e_qml::unit);
-        resourcePathToCachedUnit.insert(QStringLiteral("/HomeForm.ui.qml"), &QmlCacheGeneratedCode::_0x5f__HomeForm_ui_0x2e_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/SineOscillator.qml"), &QmlCacheGeneratedCode::_qml_SineOscillator_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/Components/MyButton.qml"), &QmlCacheGeneratedCode::_qml_Components_MyButton_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/Components/MySlider.qml"), &QmlCacheGeneratedCode::_qml_Components_MySlider_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/Components/MyTabButton.qml"), &QmlCacheGeneratedCode::_qml_Components_MyTabButton_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/Joystick.qml"), &QmlCacheGeneratedCode::_qml_Joystick_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/WaveGraph.qml"), &QmlCacheGeneratedCode::_qml_WaveGraph_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/Info.qml"), &QmlCacheGeneratedCode::_qml_Info_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/Home.qml"), &QmlCacheGeneratedCode::_qml_Home_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/main.qml"), &QmlCacheGeneratedCode::_qml_main_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/WaveSimulator.qml"), &QmlCacheGeneratedCode::_qml_WaveSimulator_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/Components/MySwitch.qml"), &QmlCacheGeneratedCode::_qml_Components_MySwitch_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/StrokePlot.qml"), &QmlCacheGeneratedCode::_qml_StrokePlot_qml::unit);
+        resourcePathToCachedUnit.insert(QStringLiteral("/qml/Components/BackgroundPage.qml"), &QmlCacheGeneratedCode::_qml_Components_BackgroundPage_qml::unit);
     QQmlPrivate::RegisterQmlUnitCacheHook registration;
     registration.version = 0;
     registration.lookupCachedQmlUnit = &lookupCachedUnit;

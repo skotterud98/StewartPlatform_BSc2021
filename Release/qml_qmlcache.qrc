@@ -1,12 +1,22 @@
 <?xml version="1.0"?>
 <RCC>
     <qresource prefix="/">
-        <file alias="main.qml">../main.qml</file>
-        <file alias="HomeForm.ui.qml">../HomeForm.ui.qml</file>
-        <file alias="qtquickcontrols2.conf">../qtquickcontrols2.conf</file>
-        <file alias="OscillatorForm.ui.qml">../OscillatorForm.ui.qml</file>
-        <file alias="PageBackground.qml">../PageBackground.qml</file>
-        <file alias="Oscillator.qml">../Oscillator.qml</file>
-        <file alias="pics/SP.png">../pics/SP.png</file>
+        <file alias="qml/Components/BackgroundPage.qml">../qml/Components/BackgroundPage.qml</file>
+        <file alias="qml/Components/MySlider.qml">../qml/Components/MySlider.qml</file>
+        <file alias="qml/Components/MySwitch.qml">../qml/Components/MySwitch.qml</file>
+        <file alias="qml/Components/MyTabButton.qml">../qml/Components/MyTabButton.qml</file>
+        <file alias="qml/images/Faculty-of-Engineering-and-Science-negative.png">../qml/images/Faculty-of-Engineering-and-Science-negative.png</file>
+        <file alias="qml/images/Faculty-of-Engineering-and-Science-positive.png">../qml/images/Faculty-of-Engineering-and-Science-positive.png</file>
+        <file alias="qml/images/SP.png">../qml/images/SP.png</file>
+        <file alias="qml/Home.qml">../qml/Home.qml</file>
+        <file alias="qml/Info.qml">../qml/Info.qml</file>
+        <file alias="qml/Joystick.qml">../qml/Joystick.qml</file>
+        <file alias="qml/main.qml">../qml/main.qml</file>
+        <file alias="qml/qtquickcontrols2.conf">../qml/qtquickcontrols2.conf</file>
+        <file alias="qml/SineOscillator.qml">../qml/SineOscillator.qml</file>
+        <file alias="qml/StrokePlot.qml">../qml/StrokePlot.qml</file>
+        <file alias="qml/WaveGraph.qml">../qml/WaveGraph.qml</file>
+        <file alias="qml/WaveSimulator.qml">../qml/WaveSimulator.qml</file>
+        <file alias="qml/Components/MyButton.qml">../qml/Components/MyButton.qml</file>
     </qresource>
 </RCC>

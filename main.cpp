@@ -1,27 +1,40 @@
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
+#include <QtWidgets/QApplication>
+#include <QtQuick/QQuickView>
+#include <QtCore/QDir>
+#include <QtQml/QQmlEngine>
 #include <QQmlContext>
 
-#include "thread.h"
+#include "oscillator.h"
+#include "controller.h"
 
 int main(int argc, char *argv[])
 {
-    Thread* thread = new Thread;
-    thread->start();
+    QApplication app(argc, argv);
 
-    QGuiApplication app(argc, argv);
+    QQuickView viewer;
+    QQmlContext* context = viewer.engine()->rootContext();
 
-    QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("oscillator_", thread->get_obj());
+    Oscillator* oscillator = new Oscillator;
+    Controller* controller = new Controller(oscillator);
+
+    context->setContextProperty("_oscillator", oscillator);
+    context->setContextProperty("_controller", controller);
 
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    engine.load(url);
+    QObject::connect(viewer.engine(), &QQmlEngine::quit, &viewer, &QWindow::close);
+
+    viewer.setTitle(QStringLiteral("QML Chart"));
+
+    viewer.setSource(QUrl("qrc:/qml/main.qml"));
+    viewer.setResizeMode(QQuickView::SizeRootObjectToView);
+    viewer.show();
 
     return app.exec();
 }
+
+
+
+
+
+
+

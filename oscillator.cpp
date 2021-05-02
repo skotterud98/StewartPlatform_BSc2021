@@ -1,319 +1,369 @@
 #include "oscillator.h"
 
-Oscillator::Oscillator(QObject *parent) : QObject(parent)
+Oscillator::Oscillator(QObject *parent)
+    : QObject(parent), m_heaveBias(0.0485)
 {
-    gui_state = AMPLITUDE;
+    // Initial oscillator parameters for amptlitude, phase and frequency
+    resetAmp();
+    resetPhase();
+    resetFreq();
+
+    m_run = true;
+    m_time = 0.;
 }
 
-std::vector<std::vector<double>> Oscillator::sample_sine(const double& t_)
+void Oscillator::resetAmp()
 {
-    std::vector<std::vector<double>> dof(2, std::vector<double>(6));
-
-    dof[POS][0] = surge_A * sin(2.*PI * surge_freq * t_ + surge_offset) + surge_bias;
-    dof[POS][1] = sway_A * sin(2.*PI * sway_freq * t_ + sway_offset) + sway_bias;
-    dof[POS][2] = heave_A * sin(2.*PI * heave_freq * t_ + heave_offset) + heave_bias;
-
-    dof[POS][3] = roll_A * (PI/180.) * sin(2.*PI * roll_freq * t_ + roll_offset) + roll_bias;
-    dof[POS][4] = pitch_A * (PI/180.) * sin(2.*PI * pitch_freq * t_ + pitch_offset) + pitch_bias;
-    dof[POS][5] = yaw_A * (PI/180.) * sin(2.*PI * yaw_freq * t_ + yaw_offset) + yaw_bias;
-
-
-    dof[VEL][0] = surge_A * 2.*PI * surge_freq * cos(2*PI * surge_freq * t_ + surge_offset);
-    dof[VEL][1] = sway_A * 2.*PI * sway_freq * cos(2*PI * sway_freq * t_ + sway_offset);
-    dof[VEL][2] = heave_A * 2.*PI * heave_freq * cos(2*PI * heave_freq * t_ + heave_offset);
-
-    dof[VEL][3] = roll_A * (PI/180.) * 2.*PI * roll_freq * cos(2*PI * roll_freq * t_ + roll_offset);
-    dof[VEL][4] = pitch_A * (PI/180.) * 2.*PI * pitch_freq * cos(2*PI * pitch_freq * t_ + pitch_offset);
-    dof[VEL][5] = yaw_A * (PI/180.) * 2.*PI * yaw_freq * cos(2*PI * yaw_freq * t_ + yaw_offset);
-
-    return dof;
+    m_surge[Amp] = 0.;
+    m_sway[Amp] = 0.;
+    m_heave[Amp] = 0.;
+    m_roll[Amp] = 0.;
+    m_pitch[Amp] = 0.;
+    m_yaw[Amp] = 0.;
 }
 
-void Oscillator::set_amp()
+void Oscillator::resetPhase()
 {
-    if (gui_state != AMPLITUDE)
+    m_surge[Phase] = 0.;
+    m_sway[Phase] = - PI / 2;
+    m_heave[Phase] = 0.;
+    m_roll[Phase] = 0.;
+    m_pitch[Phase] = - PI / 2;
+    m_yaw[Phase] = 0.;
+}
+
+void Oscillator::resetFreq()
+{
+    m_surge[Freq] = 0.2;
+    m_sway[Freq] = 0.2;
+    m_heave[Freq] = 0.2;
+    m_roll[Freq] = 0.15;
+    m_pitch[Freq] = 0.15;
+    m_yaw[Freq] = 0.15;
+}
+
+
+// Set-Get function definitions
+
+double Oscillator::getInputPos(uint8_t index)
+{
+    return m_dof(POS, index);
+}
+
+double Oscillator::getTime()
+{
+    return m_time;
+}
+
+void Oscillator::reset()
+{
+    resetAmp();
+    resetPhase();
+    resetFreq();
+}
+
+double Oscillator::getHeaveBias()
+{
+    return m_heaveBias;
+}
+
+/* ################################# Amplitude Sliders ##########################################*/
+
+double Oscillator::getSurgeAmp() const { return m_surge[Amp] * 1000.; }
+
+void Oscillator::setSurgeAmp(const double &sliderVal)
+{
+    if (sliderVal == m_surge[Amp] * 1000.)
+        return;
+    m_surge[Amp] = sliderVal / 1000.;
+    emit surgeAmpChanged(m_surge[Amp]);
+}
+
+double Oscillator::getSwayAmp() const { return m_sway[Amp] * 1000.; }
+
+void Oscillator::setSwayAmp(const double &sliderVal)
+{
+    if (sliderVal == m_sway[Amp] * 1000.)
+        return;
+    m_sway[Amp] = sliderVal / 1000.;
+    emit swayAmpChanged(m_sway[Amp]);
+}
+
+double Oscillator::getHeaveAmp() const { return m_heave[Amp] * 1000.; }
+
+void Oscillator::setHeaveAmp(const double &sliderVal)
+{
+    if (sliderVal == m_heave[Amp] * 1000.)
+        return;
+    m_heave[Amp] = sliderVal / 1000.;
+    emit heaveAmpChanged(m_heave[Amp]);
+}
+
+double Oscillator::getRollAmp() const { return m_roll[Amp]; }
+
+void Oscillator::setRollAmp(const double &sliderVal)
+{
+    if (sliderVal == m_roll[Amp])
+        return;
+    m_roll[Amp] = sliderVal;
+    emit rollAmpChanged(m_roll[Amp]);
+}
+
+double Oscillator::getPitchAmp() const { return m_pitch[Amp]; }
+
+void Oscillator::setPitchAmp(const double &sliderVal)
+{
+    if (sliderVal == m_pitch[Amp])
+        return;
+    m_pitch[Amp] = sliderVal;
+    emit pitchAmpChanged(m_pitch[Amp]);
+}
+
+double Oscillator::getYawAmp() const { return m_yaw[Amp]; }
+
+void Oscillator::setYawAmp(const double &sliderVal)
+{
+    if (sliderVal == m_yaw[Amp])
+        return;
+    m_yaw[Amp] = sliderVal;
+    emit yawAmpChanged(m_yaw[Amp]);
+}
+
+
+/* ################################# Phase Sliders ##########################################*/
+
+double Oscillator::getSurgePhase() const { return m_surge[Phase] / (2 * PI) + 0.5; }
+
+void Oscillator::setSurgePhase(const double &sliderVal)
+{
+    if (sliderVal == m_surge[Phase] / (2 * PI) + 0.5 )
+        return;
+    m_surge[Phase] = (sliderVal - 0.5) * 2 * PI;
+    emit surgePhaseChanged(m_surge[Phase]);
+}
+
+double Oscillator::getSwayPhase() const { return m_sway[Phase] / (2 * PI) + 0.5; }
+
+void Oscillator::setSwayPhase(const double &sliderVal)
+{
+    if (sliderVal == m_sway[Phase] / (2 * PI) + 0.5)
+        return;
+    m_sway[Phase] = (sliderVal - 0.5) * 2 * PI;
+    emit swayPhaseChanged(m_sway[Phase]);
+}
+
+double Oscillator::getHeavePhase() const { return m_heave[Phase] / (2 * PI) + 0.5; }
+
+void Oscillator::setHeavePhase(const double &sliderVal)
+{
+    if (sliderVal == m_heave[Phase] / (2 * PI) + 0.5)
+        return;
+    m_heave[Phase] = (sliderVal - 0.5) * 2 * PI;
+    emit heavePhaseChanged(m_heave[Phase]);
+}
+
+double Oscillator::getRollPhase() const { return m_roll[Phase] / (2 * PI) + 0.5; }
+
+void Oscillator::setRollPhase(const double &sliderVal)
+{
+    if (sliderVal == m_roll[Phase] / (2 * PI) + 0.5)
+        return;
+    m_roll[Phase] = (sliderVal - 0.5) * 2 * PI;
+    emit rollPhaseChanged(m_roll[Phase]);
+}
+
+double Oscillator::getPitchPhase() const { return m_pitch[Phase] / (2 * PI) + 0.5; }
+
+void Oscillator::setPitchPhase(const double &sliderVal)
+{
+    if (sliderVal == m_pitch[Phase] / (2 * PI) + 0.5)
+        return;
+    m_pitch[Phase] = (sliderVal - 0.5) * 2 * PI;
+    emit pitchPhaseChanged(m_pitch[Phase]);
+}
+
+double Oscillator::getYawPhase() const { return m_yaw[Phase] / (2 * PI) + 0.5; }
+
+void Oscillator::setYawPhase(const double &sliderVal)
+{
+    if (sliderVal == m_yaw[Phase] / (2 * PI) + 0.5)
+        return;
+    m_yaw[Phase] = (sliderVal - 0.5) * 2 * PI;
+    emit yawPhaseChanged(m_yaw[Phase]);
+}
+
+
+/* ################################# Frequency Sliders #######################################*/
+
+double Oscillator::getSurgeFreq() const { return m_surge[Freq]; }
+
+void Oscillator::setSurgeFreq(const double &sliderVal)
+{
+    if (sliderVal == m_surge[Freq])
+        return;
+    m_surge[Freq] = sliderVal;
+    emit surgeFreqChanged(m_surge[Freq]);
+}
+
+double Oscillator::getSwayFreq() const { return m_sway[Freq]; }
+
+void Oscillator::setSwayFreq(const double &sliderVal)
+{
+    if (sliderVal == m_sway[Freq])
+        return;
+    m_sway[Freq] = sliderVal;
+    emit swayFreqChanged(m_sway[Freq]);
+}
+
+double Oscillator::getHeaveFreq() const { return m_heave[Freq]; }
+
+void Oscillator::setHeaveFreq(const double &sliderVal)
+{
+    if (sliderVal == m_heave[Freq])
+        return;
+    m_heave[Freq] = sliderVal;
+    emit heaveFreqChanged(m_heave[Freq]);
+}
+
+double Oscillator::getRollFreq() const { return m_roll[Freq]; }
+
+void Oscillator::setRollFreq(const double &sliderVal)
+{
+    if (sliderVal == m_roll[Freq])
+        return;
+    m_roll[Freq] = sliderVal;
+    emit rollFreqChanged(m_roll[Freq]);
+}
+
+double Oscillator::getPitchFreq() const { return m_pitch[Freq]; }
+
+void Oscillator::setPitchFreq(const double &sliderVal)
+{
+    if (sliderVal == m_pitch[Freq])
+        return;
+    m_pitch[Freq] = sliderVal;
+    emit pitchFreqChanged(m_pitch[Freq]);
+}
+
+double Oscillator::getYawFreq() const { return m_yaw[Freq]; }
+
+void Oscillator::setYawFreq(const double &sliderVal)
+{
+    if (sliderVal == m_yaw[Freq])
+        return;
+    m_yaw[Freq] = sliderVal;
+    emit yawFreqChanged(m_yaw[Freq]);
+}
+
+
+bool Oscillator::getRun() const { return m_run; }
+
+void Oscillator::setRun(const bool &switchState)
+{
+    if(switchState == m_run)
+        return;
+    m_run = switchState;
+    emit runChanged(m_run);
+}
+
+
+Eigen::Matrix<double, 2, 6>& Oscillator::sample()
+{
+    static double surgePrev[2]  = { 0., 0.};
+    static double swayPrev[2]   = { 0., 0.};
+    static double heavePrev[2]  = { 0., 0.};
+    static double rollPrev[2]   = { 0., 0.};
+    static double pitchPrev[2]  = { 0., 0.};
+    static double yawPrev[2]    = { 0., 0.};
+
+
+    static double surge[3]      = { 0., 0., m_surge[Freq]};
+    static double sway[3]       = { 0., 0., m_sway[Freq]};
+    static double heave[3]      = { 0., 0., m_heave[Freq]};
+    static double roll[3]       = { 0., 0., m_roll[Freq]};
+    static double pitch[3]      = { 0., 0., m_pitch[Freq]};
+    static double yaw[3]        = { 0., 0., m_yaw[Freq]};
+
+    static double new_K = 0.01;
+    static double prev_K = 1 - new_K;
+
+
+    if (surge[Amp] <= 0.0005 || (m_surge[Freq] != surge[Freq] && fmod(m_time, 1./surge[Freq]) <= 0.01 && fmod(m_time, 1./m_surge[Freq]) <= 0.01))
+        surge[Freq] = m_surge[Freq];
+
+    if (sway[Amp] <= 0.0005 || (m_sway[Freq] != sway[Freq] && fmod(m_time, 1./sway[Freq]) <= 0.01 && fmod(m_time, 1./m_sway[Freq]) <= 0.01))
+        sway[Freq] = m_sway[Freq];
+
+    if (heave[Amp] <= 0.0005 || (m_heave[Freq] != heave[Freq] && fmod(m_time, 1./heave[Freq]) <= 0.01 && fmod(m_time, 1./m_heave[Freq]) <= 0.01))
+        heave[Freq] = m_heave[Freq];
+
+    if (roll[Amp] <= 0.00001 || (m_roll[Freq] != roll[Freq] && fmod(m_time, 1./roll[Freq]) <= 0.01 && fmod(m_time, 1./m_roll[Freq]) <= 0.01))
+        roll[Freq] = m_roll[Freq];
+
+    if (pitch[Amp] <= 0.00001 || (m_pitch[Freq] != pitch[Freq] && fmod(m_time, 1./pitch[Freq]) <= 0.01 && fmod(m_time, 1./m_pitch[Freq]) <= 0.01))
+        pitch[Freq] = m_pitch[Freq];
+
+    if (yaw[Amp] <= 0.00001 || (m_yaw[Freq] != yaw[Freq] && fmod(m_time, 1./yaw[Freq]) <= 0.01 && fmod(m_time, 1./m_yaw[Freq]) <= 0.01))
+        yaw[Freq] = m_yaw[Freq];
+
+    // Low pass filter on amplitude changes
+    surge[Amp] = new_K * m_surge[Amp] + prev_K * surgePrev[Amp];
+    sway[Amp] = new_K * m_sway[Amp] + prev_K * swayPrev[Amp];
+    heave[Amp] = new_K * m_heave[Amp] + prev_K * heavePrev[Amp];
+    roll[Amp] = new_K * m_roll[Amp] + prev_K * rollPrev[Amp];
+    pitch[Amp] = new_K * m_pitch[Amp] + prev_K * pitchPrev[Amp];
+    yaw[Amp] = new_K * m_yaw[Amp] + prev_K * yawPrev[Amp];
+
+    // Low pass filter on phase changes
+    surge[Phase] = new_K * m_surge[Phase] + prev_K * surgePrev[Phase];
+    sway[Phase] = new_K * m_sway[Phase] + prev_K * swayPrev[Phase];
+    heave[Phase] = new_K * m_heave[Phase] + prev_K * heavePrev[Phase];
+    roll[Phase] = new_K * m_roll[Phase] + prev_K * rollPrev[Phase];
+    pitch[Phase] = new_K * m_pitch[Phase] + prev_K * pitchPrev[Phase];
+    yaw[Phase] = new_K * m_yaw[Phase] + prev_K * yawPrev[Phase];
+
+
+    // Calculate the six sine waves position ( standard sine formula A*sin(wt + ø)+bias )
+    m_dof(POS, 0) = surge[Amp] * sin(2.*PI * surge[Freq] * m_time + surge[Phase]);
+    m_dof(POS, 1) = sway[Amp] * sin(2.*PI * sway[Freq] * m_time + sway[Phase]);
+    m_dof(POS, 2) = heave[Amp] * sin(2.*PI * heave[Freq] * m_time + heave[Phase]) + m_heaveBias;
+
+    m_dof(POS, 3) = roll[Amp] * (PI/180.) * sin(2.*PI * roll[Freq] * m_time + roll[Phase]);
+    m_dof(POS, 4) = pitch[Amp] * (PI/180.) * sin(2.*PI * pitch[Freq] * m_time + pitch[Phase]);
+    m_dof(POS, 5) = yaw[Amp] * (PI/180.) * sin(2.*PI * yaw[Freq] * m_time + yaw[Phase]);
+
+    // Calculate the six sine waves velocity (derivative of sine formula)
+    m_dof(VEL, 0) = surge[Amp] * 2.*PI * surge[Freq] * cos(2*PI * surge[Freq] * m_time + surge[Phase]);
+    m_dof(VEL, 1) = sway[Amp] * 2.*PI * sway[Freq] * cos(2*PI * sway[Freq] * m_time + sway[Phase]);
+    m_dof(VEL, 2) = heave[Amp] * 2.*PI * heave[Freq] * cos(2*PI * heave[Freq] * m_time + heave[Phase]);
+
+    m_dof(VEL, 3) = roll[Amp] * (PI/180.) * 2.*PI * roll[Freq] * cos(2*PI * roll[Freq] * m_time + roll[Phase]);
+    m_dof(VEL, 4) = pitch[Amp] * (PI/180.) * 2.*PI * pitch[Freq] * cos(2*PI * pitch[Freq] * m_time + pitch[Phase]);
+    m_dof(VEL, 5) = yaw[Amp] * (PI/180.) * 2.*PI * yaw[Freq] * cos(2*PI * yaw[Freq] * m_time + yaw[Phase]);
+
+    // Store amp and phase low pass filter prev-values for next iteration
+    for (uint8_t i = 0; i < 2; i++)
     {
-        gui_state = AMPLITUDE;
+        surgePrev[i] = surge[i];
+        swayPrev[i] = sway[i];
+        heavePrev[i] = heave[i];
+        rollPrev[i] = roll[i];
+        pitchPrev[i] = pitch[i];
+        yawPrev[i] = yaw[i];
     }
+
+    if (m_run && !m_zeroAmpIn())
+        m_time+= 0.01;
+
+    return m_dof;
 }
 
-void Oscillator::set_phase()
+
+bool Oscillator::m_zeroAmpIn()
 {
-    if (gui_state != PHASE)
-    {
-        gui_state = PHASE;
-    }
+    return m_surge[Amp] == 0. && m_sway[Amp] == 0. && m_heave[Amp] == 0.
+            && m_roll[Amp] == 0 && m_pitch[Amp] == 0. && m_yaw[Amp] == 0.;
 }
-
-void Oscillator::set_freq()
-{
-    if (gui_state != FREQUENCY)
-    {
-        gui_state = FREQUENCY;
-    }
-}
-
-void Oscillator::set_surge(const double& slider_value)
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        surge_A = slider_value * gain_A[0];
-        emit surge_changed((uint8_t)(surge_A*1000));
-        qDebug() << "Surge amplitude changed: " << surge_A;
-        break;
-
-    case PHASE:
-        surge_offset = slider_value * gain_phase[0];
-        emit surge_changed(surge_offset);
-        qDebug() << "Surge offset changed: " << surge_offset;
-        break;
-
-    case FREQUENCY:
-        surge_freq = slider_value * gain_freq[0];
-        emit surge_changed(surge_freq);
-        qDebug() << "Surge frequency changed: " << surge_freq;
-        break;
-
-    default:
-        break;
-    }
-
-}
-
-void Oscillator::set_sway(const double& slider_value)
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        sway_A = slider_value * gain_A[1];
-        emit sway_changed(sway_A);
-        qDebug() << "Sway amplitude changed: " << sway_A;
-        break;
-    case PHASE:
-        sway_offset = slider_value * gain_phase[1];
-        emit sway_changed(sway_offset);
-        qDebug() << "Sway offset changed: " << sway_offset;
-        break;
-    case FREQUENCY:
-        sway_freq = slider_value * gain_freq[1];
-        emit sway_changed(sway_freq);
-        qDebug() << "Sway frequency changed: " << sway_freq;
-        break;
-    default:
-        break;
-    }
-}
-
-void Oscillator::set_heave(const double& slider_value)
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        heave_A = slider_value * gain_A[2];
-        emit heave_changed(surge_A);
-        qDebug() << "Heave amplitude changed: " << heave_A;
-        break;
-    case PHASE:
-        heave_offset = slider_value * gain_phase[2];
-        emit heave_changed(heave_offset);
-        qDebug() << "Heave offset changed: " << heave_offset;
-        break;
-    case FREQUENCY:
-        heave_freq = slider_value * gain_freq[2];
-        emit heave_changed(surge_freq);
-        qDebug() << "Heave frequency changed: " << heave_freq;
-        break;
-    default:
-        break;
-    }
-}
-
-void Oscillator::set_roll(const double& slider_value)
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        roll_A = slider_value * gain_A[3];
-        emit roll_changed(roll_A);
-        qDebug() << "Roll amplitude changed: " << roll_A;
-        break;
-    case PHASE:
-        roll_offset = slider_value * gain_phase[3];
-        emit roll_changed(roll_offset);
-        qDebug() << "Roll offset changed: " << roll_offset;
-        break;
-    case FREQUENCY:
-        roll_freq = slider_value * gain_freq[3];
-        emit roll_changed(roll_freq);
-        qDebug() << "Roll frequency changed: " << roll_freq;
-        break;
-    default:
-        break;
-    }
-}
-
-void Oscillator::set_pitch(const double& slider_value)
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        pitch_A = slider_value * gain_A[4];
-        emit pitch_changed(pitch_A);
-        qDebug() << "Pitch amplitude changed: " << pitch_A;
-        break;
-    case PHASE:
-        pitch_offset = slider_value * gain_phase[4];
-        emit pitch_changed(pitch_offset);
-        qDebug() << "Pitch offset changed: " << pitch_offset;
-        break;
-    case FREQUENCY:
-        pitch_freq = slider_value * gain_freq[4];
-        emit pitch_changed(pitch_freq);
-        qDebug() << "Pitch frequency changed: " << pitch_freq;
-        break;
-    default:
-        break;
-    }
-}
-
-void Oscillator::set_yaw(const double& slider_value)
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        yaw_A = slider_value * gain_A[5];
-        emit yaw_changed(yaw_A);
-        qDebug() << "Yaw amplitude changed: " << yaw_A;
-        break;
-    case PHASE:
-        yaw_offset = slider_value * gain_phase[5];
-        emit yaw_changed(yaw_offset);
-        qDebug() << "Yaw offset changed: " << yaw_offset;
-        break;
-    case FREQUENCY:
-        yaw_freq = slider_value * gain_freq[5];
-        emit yaw_changed(yaw_freq);
-        qDebug() << "Yaw frequency changed: " << yaw_freq;
-        break;
-    default:
-        break;
-    }
-}
-
-double Oscillator::get_slider_surge()
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        return surge_A / gain_A[0];
-        break;
-    case PHASE:
-        return surge_offset / gain_phase[0];
-        break;
-    case FREQUENCY:
-        return surge_freq / gain_freq[0];
-        break;
-    default:
-        return -1.;
-    }
-}
-
-double Oscillator::get_slider_sway()
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        return sway_A / gain_A[1];
-        break;
-    case PHASE:
-        return sway_offset / gain_phase[1];
-        break;
-    case FREQUENCY:
-        return sway_freq / gain_freq[1];
-        break;
-    default:
-        return -1.;
-    }
-}
-
-double Oscillator::get_slider_heave()
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        return heave_A / gain_A[2];
-        break;
-    case PHASE:
-        return heave_offset / gain_phase[2];
-        break;
-    case FREQUENCY:
-        return heave_freq / gain_freq[2];
-        break;
-    default:
-        return -1.;
-    }
-}
-
-double Oscillator::get_slider_roll()
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        return roll_A / gain_A[3];
-        break;
-    case PHASE:
-        return roll_offset / gain_phase[3];
-        break;
-    case FREQUENCY:
-        return roll_freq / gain_freq[3];
-        break;
-    default:
-        return -1.;
-    }
-}
-
-double Oscillator::get_slider_pitch()
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        return pitch_A / gain_A[4];
-        break;
-    case PHASE:
-        return pitch_offset / gain_phase[4];
-        break;
-    case FREQUENCY:
-        return pitch_freq / gain_freq[4];
-        break;
-    default:
-        return -1.;
-    }
-}
-
-double Oscillator::get_slider_yaw()
-{
-    switch (gui_state)
-    {
-    case AMPLITUDE:
-        return yaw_A / gain_A[5];
-        break;
-    case PHASE:
-        return yaw_offset / gain_phase[5];
-        break;
-    case FREQUENCY:
-        return yaw_freq / gain_freq[5];
-        break;
-    default:
-        return -1.;
-    }
-}
-
-
-
-
-
-
 
 
 

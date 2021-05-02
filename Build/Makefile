@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc
 CXX           = /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -march=armv8-a -mtune=cortex-a72 -mfpu=crypto-neon-fp-armv8 -mfloat-abi=hard --sysroot=/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -march=armv8-a -mtune=cortex-a72 -mfpu=crypto-neon-fp-armv8 -mfloat-abi=hard --sysroot=/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot -g -std=gnu++11 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../../StewartPlatform -I. -I/usr/include/eigen3 -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQmlModels -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtNetwork -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore -I. -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/devices/linux-rasp-pi4-v3d-g++
+INCPATH       = -I../../StewartPlatform -I. -I/usr/include/eigen3 -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCharts -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQmlModels -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtNetwork -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore -I. -I../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/devices/linux-rasp-pi4-v3d-g++
 QMAKE         = /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = StewartPlatform1.0.0
 DISTDIR = /home/gruppe15/StewartPlatform/Build/.tmp/StewartPlatform1.0.0
 LINK          = /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-g++
 LFLAGS        = -mfloat-abi=hard --sysroot=/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot -Wl,-rpath,/usr/local/qt5.15/lib -Wl,-rpath-link,/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/lib/arm-linux-gnueabihf -Wl,-rpath-link,/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/lib/arm-linux-gnueabihf
-LIBS          = $(SUBLIBS) /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Quick.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Gui.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5QmlModels.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Qml.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Network.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Core.so -L/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/lib/arm-linux-gnueabihf -lGLESv2 -lpthread   
+LIBS          = $(SUBLIBS) /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Charts.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Widgets.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Quick.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Gui.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5QmlModels.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Qml.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Network.so /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/lib/libQt5Core.so -L/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/lib/arm-linux-gnueabihf -lGLESv2 -lpthread   
 AR            = /home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ar cqs
 RANLIB        = 
 SED           = sed
@@ -53,18 +53,26 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../canbus.cpp \
+		../controller.cpp \
+		../imode.cpp \
 		../inversekinematics.cpp \
 		../main.cpp \
 		../oscillator.cpp \
-		../thread.cpp qrc_qml.cpp \
-		moc_oscillator.cpp
+		../worker.cpp qrc_qml.cpp \
+		moc_controller.cpp \
+		moc_oscillator.cpp \
+		moc_worker.cpp
 OBJECTS       = canbus.o \
+		controller.o \
+		imode.o \
 		inversekinematics.o \
 		main.o \
 		oscillator.o \
-		thread.o \
+		worker.o \
 		qrc_qml.o \
-		moc_oscillator.o
+		moc_controller.o \
+		moc_oscillator.o \
+		moc_worker.o
 DIST          = ../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/spec_pre.prf \
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/common/unix.conf \
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/common/linux.conf \
@@ -251,6 +259,7 @@ DIST          = ../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/resources.prf \
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/moc.prf \
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/unix/opengl.prf \
+		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/uic.prf \
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/unix/thread.prf \
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/qmake_use.prf \
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/file_copies.prf \
@@ -259,13 +268,17 @@ DIST          = ../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/yacc.prf \
 		../../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/lex.prf \
 		../../StewartPlatform.pro ../canbus.h \
+		../controller.h \
+		../imode.h \
 		../inversekinematics.h \
 		../oscillator.h \
-		../thread.h ../canbus.cpp \
+		../worker.h ../canbus.cpp \
+		../controller.cpp \
+		../imode.cpp \
 		../inversekinematics.cpp \
 		../main.cpp \
 		../oscillator.cpp \
-		../thread.cpp
+		../worker.cpp
 QMAKE_TARGET  = StewartPlatform
 DESTDIR       = 
 TARGET        = StewartPlatform
@@ -463,6 +476,7 @@ Makefile: ../StewartPlatform.pro ../../Documents/Qt-CrossCompile-RaspberryPi/ras
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/resources.prf \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/moc.prf \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/unix/opengl.prf \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/uic.prf \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/unix/thread.prf \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/qmake_use.prf \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/file_copies.prf \
@@ -471,7 +485,7 @@ Makefile: ../StewartPlatform.pro ../../Documents/Qt-CrossCompile-RaspberryPi/ras
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/yacc.prf \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/lex.prf \
 		../StewartPlatform.pro \
-		../qml/qml.qrc
+		../qml.qrc
 	$(QMAKE) -o Makefile ../StewartPlatform.pro -spec devices/linux-rasp-pi4-v3d-g++ CONFIG+=debug CONFIG+=qml_debug
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/spec_pre.prf:
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/common/unix.conf:
@@ -659,6 +673,7 @@ Makefile: ../StewartPlatform.pro ../../Documents/Qt-CrossCompile-RaspberryPi/ras
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/resources.prf:
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/moc.prf:
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/unix/opengl.prf:
+../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/uic.prf:
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/unix/thread.prf:
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/qmake_use.prf:
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/file_copies.prf:
@@ -667,7 +682,7 @@ Makefile: ../StewartPlatform.pro ../../Documents/Qt-CrossCompile-RaspberryPi/ras
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/yacc.prf:
 ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/lex.prf:
 ../StewartPlatform.pro:
-../qml/qml.qrc:
+../qml.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../StewartPlatform.pro -spec devices/linux-rasp-pi4-v3d-g++ CONFIG+=debug CONFIG+=qml_debug
 
@@ -682,10 +697,10 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../qml/qml.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../qml.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../canbus.h ../inversekinematics.h ../oscillator.h ../thread.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../canbus.cpp ../inversekinematics.cpp ../main.cpp ../oscillator.cpp ../thread.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../canbus.h ../controller.h ../imode.h ../inversekinematics.h ../oscillator.h ../worker.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../canbus.cpp ../controller.cpp ../imode.cpp ../inversekinematics.cpp ../main.cpp ../oscillator.cpp ../worker.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -712,18 +727,25 @@ benchmark: first
 compiler_rcc_make_all: qrc_qml.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_qml.cpp
-qrc_qml.cpp: ../qml/qml.qrc \
+qrc_qml.cpp: ../qml.qrc \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/rcc \
-		../qml/PageBackground.qml \
-		../qml/Oscillator.qml \
-		../qml/HomeForm.ui.qml \
+		../qml/StrokePlot.qml \
+		../qml/SineOscillator.qml \
+		../qml/Info.qml \
+		../qml/WaveSimulator.qml \
+		../qml/Joystick.qml \
 		../qml/qtquickcontrols2.conf \
-		../qml/OscillatorForm.ui.qml \
+		../qml/Home.qml \
 		../qml/main.qml \
-		../qml/pics/Faculty-of-Engineering-and-Science-negative.png \
-		../qml/pics/Faculty-of-Engineering-and-Science-positive.png \
-		../qml/pics/SP.png
-	/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/rcc -name qml ../qml/qml.qrc -o qrc_qml.cpp
+		../qml/InputPlot.qml \
+		../qml/images/Faculty-of-Engineering-and-Science-negative.png \
+		../qml/images/Faculty-of-Engineering-and-Science-positive.png \
+		../qml/Components/MySwitch.qml \
+		../qml/Components/MyTabButton.qml \
+		../qml/Components/BackgroundPage.qml \
+		../qml/Components/MyButton.qml \
+		../qml/Components/MySlider.qml
+	/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/rcc -name qml ../qml.qrc -o qrc_qml.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
@@ -731,9 +753,295 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/data/dummy.cpp
 	/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-g++ -march=armv8-a -mtune=cortex-a72 -mfpu=crypto-neon-fp-armv8 -mfloat-abi=hard --sysroot=/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_oscillator.cpp
+compiler_moc_header_make_all: moc_controller.cpp moc_oscillator.cpp moc_worker.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_oscillator.cpp
+	-$(DEL_FILE) moc_controller.cpp moc_oscillator.cpp moc_worker.cpp
+moc_controller.cpp: ../controller.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QObject \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnamespace.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobal.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig-bootstrapped.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtcore-config.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsystemdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qprocessordetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcompilerdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtypeinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsysinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlogging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qflags.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbasicatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_bootstrap.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qgenericatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_cxx11.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_msvc.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobalstatic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmutex.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnumeric.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qversiontagging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstring.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qchar.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qrefcount.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qarraydata.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringliteral.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringview.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringbuilder.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiterator.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhashfunctions.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpair.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvector.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainertools_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpoint.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearraylist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qregexp.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringmatcher.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcoreevent.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qscopedpointer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmetatype.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvarlengtharray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainerfwd.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QTimer \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtimer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbasictimer.h \
+		../inversekinematics.h \
+		/usr/include/eigen3/Eigen/Dense \
+		/usr/include/eigen3/Eigen/Core \
+		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Macros.h \
+		/usr/include/eigen3/Eigen/src/Core/util/MKL_support.h \
+		/usr/include/eigen3/Eigen/src/misc/blas.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Constants.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Meta.h \
+		/usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
+		/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h \
+		/usr/include/eigen3/Eigen/src/Core/util/XprHelper.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Memory.h \
+		/usr/include/eigen3/Eigen/src/Core/NumTraits.h \
+		/usr/include/eigen3/Eigen/src/Core/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/Half.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/PacketMathHalf.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/StlFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/IO.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h \
+		/usr/include/eigen3/Eigen/src/Core/MatrixBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/Core/EigenBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Product.h \
+		/usr/include/eigen3/Eigen/src/Core/CoreEvaluators.h \
+		/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h \
+		/usr/include/eigen3/Eigen/src/Core/Assign.h \
+		/usr/include/eigen3/Eigen/src/Core/ArrayBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseStorage.h \
+		/usr/include/eigen3/Eigen/src/Core/NestByValue.h \
+		/usr/include/eigen3/Eigen/src/Core/ReturnByValue.h \
+		/usr/include/eigen3/Eigen/src/Core/NoAlias.h \
+		/usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Matrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Array.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseTernaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseNullaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseUnaryView.h \
+		/usr/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/Dot.h \
+		/usr/include/eigen3/Eigen/src/Core/StableNorm.h \
+		/usr/include/eigen3/Eigen/src/Core/Stride.h \
+		/usr/include/eigen3/Eigen/src/Core/MapBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Map.h \
+		/usr/include/eigen3/Eigen/src/Core/Ref.h \
+		/usr/include/eigen3/Eigen/src/Core/Block.h \
+		/usr/include/eigen3/Eigen/src/Core/VectorBlock.h \
+		/usr/include/eigen3/Eigen/src/Core/Transpose.h \
+		/usr/include/eigen3/Eigen/src/Core/DiagonalMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Diagonal.h \
+		/usr/include/eigen3/Eigen/src/Core/DiagonalProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/Redux.h \
+		/usr/include/eigen3/Eigen/src/Core/Visitor.h \
+		/usr/include/eigen3/Eigen/src/Core/Fuzzy.h \
+		/usr/include/eigen3/Eigen/src/Core/Swap.h \
+		/usr/include/eigen3/Eigen/src/Core/CommaInitializer.h \
+		/usr/include/eigen3/Eigen/src/Core/GeneralProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/Solve.h \
+		/usr/include/eigen3/Eigen/src/Core/Inverse.h \
+		/usr/include/eigen3/Eigen/src/Core/SolverBase.h \
+		/usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Transpositions.h \
+		/usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/SelfAdjointView.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
+		/usr/include/eigen3/Eigen/src/Core/products/Parallelizer.h \
+		/usr/include/eigen3/Eigen/src/Core/ProductEvaluators.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/SolveTriangular.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h \
+		/usr/include/eigen3/Eigen/src/Core/BandMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/CoreIterators.h \
+		/usr/include/eigen3/Eigen/src/Core/ConditionEstimator.h \
+		/usr/include/eigen3/Eigen/src/Core/BooleanRedux.h \
+		/usr/include/eigen3/Eigen/src/Core/Select.h \
+		/usr/include/eigen3/Eigen/src/Core/VectorwiseOp.h \
+		/usr/include/eigen3/Eigen/src/Core/Random.h \
+		/usr/include/eigen3/Eigen/src/Core/Replicate.h \
+		/usr/include/eigen3/Eigen/src/Core/Reverse.h \
+		/usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/Assign_MKL.h \
+		/usr/include/eigen3/Eigen/src/Core/GlobalFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
+		/usr/include/eigen3/Eigen/LU \
+		/usr/include/eigen3/Eigen/src/misc/Kernel.h \
+		/usr/include/eigen3/Eigen/src/misc/Image.h \
+		/usr/include/eigen3/Eigen/src/LU/FullPivLU.h \
+		/usr/include/eigen3/Eigen/src/LU/PartialPivLU.h \
+		/usr/include/eigen3/Eigen/src/misc/lapacke.h \
+		/usr/include/eigen3/Eigen/src/misc/lapacke_mangling.h \
+		/usr/include/eigen3/Eigen/src/LU/PartialPivLU_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/LU/Determinant.h \
+		/usr/include/eigen3/Eigen/src/LU/InverseImpl.h \
+		/usr/include/eigen3/Eigen/src/LU/arch/Inverse_SSE.h \
+		/usr/include/eigen3/Eigen/Cholesky \
+		/usr/include/eigen3/Eigen/Jacobi \
+		/usr/include/eigen3/Eigen/src/Jacobi/Jacobi.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LLT.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LDLT.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LLT_LAPACKE.h \
+		/usr/include/eigen3/Eigen/QR \
+		/usr/include/eigen3/Eigen/Householder \
+		/usr/include/eigen3/Eigen/src/Householder/Householder.h \
+		/usr/include/eigen3/Eigen/src/Householder/HouseholderSequence.h \
+		/usr/include/eigen3/Eigen/src/Householder/BlockHouseholder.h \
+		/usr/include/eigen3/Eigen/src/QR/HouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/FullPivHouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
+		/usr/include/eigen3/Eigen/src/QR/HouseholderQR_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR_LAPACKE.h \
+		/usr/include/eigen3/Eigen/SVD \
+		/usr/include/eigen3/Eigen/src/misc/RealSvd2x2.h \
+		/usr/include/eigen3/Eigen/src/SVD/UpperBidiagonalization.h \
+		/usr/include/eigen3/Eigen/src/SVD/SVDBase.h \
+		/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h \
+		/usr/include/eigen3/Eigen/src/SVD/BDCSVD.h \
+		/usr/include/eigen3/Eigen/src/SVD/JacobiSVD_LAPACKE.h \
+		/usr/include/eigen3/Eigen/Geometry \
+		/usr/include/eigen3/Eigen/src/Geometry/OrthoMethods.h \
+		/usr/include/eigen3/Eigen/src/Geometry/EulerAngles.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Homogeneous.h \
+		/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Rotation2D.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Quaternion.h \
+		/usr/include/eigen3/Eigen/src/Geometry/AngleAxis.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Transform.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Translation.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Scaling.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Hyperplane.h \
+		/usr/include/eigen3/Eigen/src/Geometry/ParametrizedLine.h \
+		/usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Umeyama.h \
+		/usr/include/eigen3/Eigen/src/Geometry/arch/Geometry_SSE.h \
+		/usr/include/eigen3/Eigen/Eigenvalues \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h \
+		../canbus.h \
+		../imode.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QDebug \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qdebug.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhash.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmap.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtextstream.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiodevice.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlocale.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvariant.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qshareddata.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qset.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontiguouscache.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer_impl.h \
+		../oscillator.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QString \
+		moc_predefs.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/moc
+	/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/moc $(DEFINES) --include /home/gruppe15/StewartPlatform/Build/moc_predefs.h -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/devices/linux-rasp-pi4-v3d-g++ -I/home/gruppe15/StewartPlatform -I/usr/include/eigen3 -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCharts -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQmlModels -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtNetwork -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore -I. -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1 -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/arm-linux-gnueabihf -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/backward -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include-fixed -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include/arm-linux-gnueabihf -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include ../controller.h -o moc_controller.cpp
+
 moc_oscillator.cpp: ../oscillator.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QObject \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject.h \
@@ -801,14 +1109,283 @@ moc_oscillator.cpp: ../oscillator.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontiguouscache.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QString \
+		../imode.h \
+		/usr/include/eigen3/Eigen/Dense \
+		/usr/include/eigen3/Eigen/Core \
+		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Macros.h \
+		/usr/include/eigen3/Eigen/src/Core/util/MKL_support.h \
+		/usr/include/eigen3/Eigen/src/misc/blas.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Constants.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Meta.h \
+		/usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
+		/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h \
+		/usr/include/eigen3/Eigen/src/Core/util/XprHelper.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Memory.h \
+		/usr/include/eigen3/Eigen/src/Core/NumTraits.h \
+		/usr/include/eigen3/Eigen/src/Core/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/Half.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/PacketMathHalf.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/StlFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/IO.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h \
+		/usr/include/eigen3/Eigen/src/Core/MatrixBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/Core/EigenBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Product.h \
+		/usr/include/eigen3/Eigen/src/Core/CoreEvaluators.h \
+		/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h \
+		/usr/include/eigen3/Eigen/src/Core/Assign.h \
+		/usr/include/eigen3/Eigen/src/Core/ArrayBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseStorage.h \
+		/usr/include/eigen3/Eigen/src/Core/NestByValue.h \
+		/usr/include/eigen3/Eigen/src/Core/ReturnByValue.h \
+		/usr/include/eigen3/Eigen/src/Core/NoAlias.h \
+		/usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Matrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Array.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseTernaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseNullaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseUnaryView.h \
+		/usr/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/Dot.h \
+		/usr/include/eigen3/Eigen/src/Core/StableNorm.h \
+		/usr/include/eigen3/Eigen/src/Core/Stride.h \
+		/usr/include/eigen3/Eigen/src/Core/MapBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Map.h \
+		/usr/include/eigen3/Eigen/src/Core/Ref.h \
+		/usr/include/eigen3/Eigen/src/Core/Block.h \
+		/usr/include/eigen3/Eigen/src/Core/VectorBlock.h \
+		/usr/include/eigen3/Eigen/src/Core/Transpose.h \
+		/usr/include/eigen3/Eigen/src/Core/DiagonalMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Diagonal.h \
+		/usr/include/eigen3/Eigen/src/Core/DiagonalProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/Redux.h \
+		/usr/include/eigen3/Eigen/src/Core/Visitor.h \
+		/usr/include/eigen3/Eigen/src/Core/Fuzzy.h \
+		/usr/include/eigen3/Eigen/src/Core/Swap.h \
+		/usr/include/eigen3/Eigen/src/Core/CommaInitializer.h \
+		/usr/include/eigen3/Eigen/src/Core/GeneralProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/Solve.h \
+		/usr/include/eigen3/Eigen/src/Core/Inverse.h \
+		/usr/include/eigen3/Eigen/src/Core/SolverBase.h \
+		/usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Transpositions.h \
+		/usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/SelfAdjointView.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
+		/usr/include/eigen3/Eigen/src/Core/products/Parallelizer.h \
+		/usr/include/eigen3/Eigen/src/Core/ProductEvaluators.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/SolveTriangular.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h \
+		/usr/include/eigen3/Eigen/src/Core/BandMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/CoreIterators.h \
+		/usr/include/eigen3/Eigen/src/Core/ConditionEstimator.h \
+		/usr/include/eigen3/Eigen/src/Core/BooleanRedux.h \
+		/usr/include/eigen3/Eigen/src/Core/Select.h \
+		/usr/include/eigen3/Eigen/src/Core/VectorwiseOp.h \
+		/usr/include/eigen3/Eigen/src/Core/Random.h \
+		/usr/include/eigen3/Eigen/src/Core/Replicate.h \
+		/usr/include/eigen3/Eigen/src/Core/Reverse.h \
+		/usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/Assign_MKL.h \
+		/usr/include/eigen3/Eigen/src/Core/GlobalFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
+		/usr/include/eigen3/Eigen/LU \
+		/usr/include/eigen3/Eigen/src/misc/Kernel.h \
+		/usr/include/eigen3/Eigen/src/misc/Image.h \
+		/usr/include/eigen3/Eigen/src/LU/FullPivLU.h \
+		/usr/include/eigen3/Eigen/src/LU/PartialPivLU.h \
+		/usr/include/eigen3/Eigen/src/misc/lapacke.h \
+		/usr/include/eigen3/Eigen/src/misc/lapacke_mangling.h \
+		/usr/include/eigen3/Eigen/src/LU/PartialPivLU_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/LU/Determinant.h \
+		/usr/include/eigen3/Eigen/src/LU/InverseImpl.h \
+		/usr/include/eigen3/Eigen/src/LU/arch/Inverse_SSE.h \
+		/usr/include/eigen3/Eigen/Cholesky \
+		/usr/include/eigen3/Eigen/Jacobi \
+		/usr/include/eigen3/Eigen/src/Jacobi/Jacobi.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LLT.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LDLT.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LLT_LAPACKE.h \
+		/usr/include/eigen3/Eigen/QR \
+		/usr/include/eigen3/Eigen/Householder \
+		/usr/include/eigen3/Eigen/src/Householder/Householder.h \
+		/usr/include/eigen3/Eigen/src/Householder/HouseholderSequence.h \
+		/usr/include/eigen3/Eigen/src/Householder/BlockHouseholder.h \
+		/usr/include/eigen3/Eigen/src/QR/HouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/FullPivHouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
+		/usr/include/eigen3/Eigen/src/QR/HouseholderQR_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR_LAPACKE.h \
+		/usr/include/eigen3/Eigen/SVD \
+		/usr/include/eigen3/Eigen/src/misc/RealSvd2x2.h \
+		/usr/include/eigen3/Eigen/src/SVD/UpperBidiagonalization.h \
+		/usr/include/eigen3/Eigen/src/SVD/SVDBase.h \
+		/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h \
+		/usr/include/eigen3/Eigen/src/SVD/BDCSVD.h \
+		/usr/include/eigen3/Eigen/src/SVD/JacobiSVD_LAPACKE.h \
+		/usr/include/eigen3/Eigen/Geometry \
+		/usr/include/eigen3/Eigen/src/Geometry/OrthoMethods.h \
+		/usr/include/eigen3/Eigen/src/Geometry/EulerAngles.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Homogeneous.h \
+		/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Rotation2D.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Quaternion.h \
+		/usr/include/eigen3/Eigen/src/Geometry/AngleAxis.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Transform.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Translation.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Scaling.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Hyperplane.h \
+		/usr/include/eigen3/Eigen/src/Geometry/ParametrizedLine.h \
+		/usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Umeyama.h \
+		/usr/include/eigen3/Eigen/src/Geometry/arch/Geometry_SSE.h \
+		/usr/include/eigen3/Eigen/Eigenvalues \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h \
 		moc_predefs.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/moc
-	/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/moc $(DEFINES) --include /home/gruppe15/StewartPlatform/Build/moc_predefs.h -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/devices/linux-rasp-pi4-v3d-g++ -I/home/gruppe15/StewartPlatform -I/usr/include/eigen3 -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQmlModels -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtNetwork -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore -I. -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1 -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/arm-linux-gnueabihf -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/backward -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include-fixed -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include/arm-linux-gnueabihf -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include ../oscillator.h -o moc_oscillator.cpp
+	/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/moc $(DEFINES) --include /home/gruppe15/StewartPlatform/Build/moc_predefs.h -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/devices/linux-rasp-pi4-v3d-g++ -I/home/gruppe15/StewartPlatform -I/usr/include/eigen3 -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCharts -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQmlModels -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtNetwork -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore -I. -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1 -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/arm-linux-gnueabihf -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/backward -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include-fixed -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include/arm-linux-gnueabihf -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include ../oscillator.h -o moc_oscillator.cpp
+
+moc_worker.cpp: ../worker.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QObject \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnamespace.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobal.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig-bootstrapped.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtcore-config.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsystemdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qprocessordetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcompilerdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtypeinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsysinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlogging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qflags.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbasicatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_bootstrap.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qgenericatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_cxx11.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_msvc.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobalstatic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmutex.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnumeric.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qversiontagging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstring.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qchar.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qrefcount.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qarraydata.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringliteral.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringview.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringbuilder.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiterator.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhashfunctions.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpair.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvector.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainertools_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpoint.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearraylist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qregexp.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringmatcher.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcoreevent.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qscopedpointer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmetatype.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvarlengtharray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainerfwd.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject_impl.h \
+		moc_predefs.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/moc
+	/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/bin/moc $(DEFINES) --include /home/gruppe15/StewartPlatform/Build/moc_predefs.h -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/mkspecs/devices/linux-rasp-pi4-v3d-g++ -I/home/gruppe15/StewartPlatform -I/usr/include/eigen3 -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCharts -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQmlModels -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtNetwork -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore -I. -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1 -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/arm-linux-gnueabihf -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include/c++/7.4.1/backward -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.4.1/include-fixed -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/tools/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/include -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include/arm-linux-gnueabihf -I/home/gruppe15/Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/sysroot/usr/include ../worker.h -o moc_worker.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
+compiler_uic_make_all:
+compiler_uic_clean:
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -821,6 +1398,566 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 canbus.o: ../canbus.cpp ../canbus.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o canbus.o ../canbus.cpp
+
+controller.o: ../controller.cpp ../controller.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QObject \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnamespace.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobal.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig-bootstrapped.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtcore-config.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsystemdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qprocessordetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcompilerdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtypeinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsysinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlogging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qflags.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbasicatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_bootstrap.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qgenericatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_cxx11.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_msvc.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobalstatic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmutex.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnumeric.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qversiontagging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstring.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qchar.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qrefcount.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qarraydata.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringliteral.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringview.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringbuilder.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiterator.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhashfunctions.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpair.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvector.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainertools_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpoint.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearraylist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qregexp.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringmatcher.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcoreevent.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qscopedpointer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmetatype.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvarlengtharray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainerfwd.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QTimer \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtimer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbasictimer.h \
+		../inversekinematics.h \
+		/usr/include/eigen3/Eigen/Dense \
+		/usr/include/eigen3/Eigen/Core \
+		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Macros.h \
+		/usr/include/eigen3/Eigen/src/Core/util/MKL_support.h \
+		/usr/include/eigen3/Eigen/src/misc/blas.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Constants.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Meta.h \
+		/usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
+		/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h \
+		/usr/include/eigen3/Eigen/src/Core/util/XprHelper.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Memory.h \
+		/usr/include/eigen3/Eigen/src/Core/NumTraits.h \
+		/usr/include/eigen3/Eigen/src/Core/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/Half.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/PacketMathHalf.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/StlFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/IO.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h \
+		/usr/include/eigen3/Eigen/src/Core/MatrixBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/Core/EigenBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Product.h \
+		/usr/include/eigen3/Eigen/src/Core/CoreEvaluators.h \
+		/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h \
+		/usr/include/eigen3/Eigen/src/Core/Assign.h \
+		/usr/include/eigen3/Eigen/src/Core/ArrayBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseStorage.h \
+		/usr/include/eigen3/Eigen/src/Core/NestByValue.h \
+		/usr/include/eigen3/Eigen/src/Core/ReturnByValue.h \
+		/usr/include/eigen3/Eigen/src/Core/NoAlias.h \
+		/usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Matrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Array.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseTernaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseNullaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseUnaryView.h \
+		/usr/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/Dot.h \
+		/usr/include/eigen3/Eigen/src/Core/StableNorm.h \
+		/usr/include/eigen3/Eigen/src/Core/Stride.h \
+		/usr/include/eigen3/Eigen/src/Core/MapBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Map.h \
+		/usr/include/eigen3/Eigen/src/Core/Ref.h \
+		/usr/include/eigen3/Eigen/src/Core/Block.h \
+		/usr/include/eigen3/Eigen/src/Core/VectorBlock.h \
+		/usr/include/eigen3/Eigen/src/Core/Transpose.h \
+		/usr/include/eigen3/Eigen/src/Core/DiagonalMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Diagonal.h \
+		/usr/include/eigen3/Eigen/src/Core/DiagonalProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/Redux.h \
+		/usr/include/eigen3/Eigen/src/Core/Visitor.h \
+		/usr/include/eigen3/Eigen/src/Core/Fuzzy.h \
+		/usr/include/eigen3/Eigen/src/Core/Swap.h \
+		/usr/include/eigen3/Eigen/src/Core/CommaInitializer.h \
+		/usr/include/eigen3/Eigen/src/Core/GeneralProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/Solve.h \
+		/usr/include/eigen3/Eigen/src/Core/Inverse.h \
+		/usr/include/eigen3/Eigen/src/Core/SolverBase.h \
+		/usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Transpositions.h \
+		/usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/SelfAdjointView.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
+		/usr/include/eigen3/Eigen/src/Core/products/Parallelizer.h \
+		/usr/include/eigen3/Eigen/src/Core/ProductEvaluators.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/SolveTriangular.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h \
+		/usr/include/eigen3/Eigen/src/Core/BandMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/CoreIterators.h \
+		/usr/include/eigen3/Eigen/src/Core/ConditionEstimator.h \
+		/usr/include/eigen3/Eigen/src/Core/BooleanRedux.h \
+		/usr/include/eigen3/Eigen/src/Core/Select.h \
+		/usr/include/eigen3/Eigen/src/Core/VectorwiseOp.h \
+		/usr/include/eigen3/Eigen/src/Core/Random.h \
+		/usr/include/eigen3/Eigen/src/Core/Replicate.h \
+		/usr/include/eigen3/Eigen/src/Core/Reverse.h \
+		/usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/Assign_MKL.h \
+		/usr/include/eigen3/Eigen/src/Core/GlobalFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
+		/usr/include/eigen3/Eigen/LU \
+		/usr/include/eigen3/Eigen/src/misc/Kernel.h \
+		/usr/include/eigen3/Eigen/src/misc/Image.h \
+		/usr/include/eigen3/Eigen/src/LU/FullPivLU.h \
+		/usr/include/eigen3/Eigen/src/LU/PartialPivLU.h \
+		/usr/include/eigen3/Eigen/src/misc/lapacke.h \
+		/usr/include/eigen3/Eigen/src/misc/lapacke_mangling.h \
+		/usr/include/eigen3/Eigen/src/LU/PartialPivLU_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/LU/Determinant.h \
+		/usr/include/eigen3/Eigen/src/LU/InverseImpl.h \
+		/usr/include/eigen3/Eigen/src/LU/arch/Inverse_SSE.h \
+		/usr/include/eigen3/Eigen/Cholesky \
+		/usr/include/eigen3/Eigen/Jacobi \
+		/usr/include/eigen3/Eigen/src/Jacobi/Jacobi.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LLT.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LDLT.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LLT_LAPACKE.h \
+		/usr/include/eigen3/Eigen/QR \
+		/usr/include/eigen3/Eigen/Householder \
+		/usr/include/eigen3/Eigen/src/Householder/Householder.h \
+		/usr/include/eigen3/Eigen/src/Householder/HouseholderSequence.h \
+		/usr/include/eigen3/Eigen/src/Householder/BlockHouseholder.h \
+		/usr/include/eigen3/Eigen/src/QR/HouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/FullPivHouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
+		/usr/include/eigen3/Eigen/src/QR/HouseholderQR_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR_LAPACKE.h \
+		/usr/include/eigen3/Eigen/SVD \
+		/usr/include/eigen3/Eigen/src/misc/RealSvd2x2.h \
+		/usr/include/eigen3/Eigen/src/SVD/UpperBidiagonalization.h \
+		/usr/include/eigen3/Eigen/src/SVD/SVDBase.h \
+		/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h \
+		/usr/include/eigen3/Eigen/src/SVD/BDCSVD.h \
+		/usr/include/eigen3/Eigen/src/SVD/JacobiSVD_LAPACKE.h \
+		/usr/include/eigen3/Eigen/Geometry \
+		/usr/include/eigen3/Eigen/src/Geometry/OrthoMethods.h \
+		/usr/include/eigen3/Eigen/src/Geometry/EulerAngles.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Homogeneous.h \
+		/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Rotation2D.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Quaternion.h \
+		/usr/include/eigen3/Eigen/src/Geometry/AngleAxis.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Transform.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Translation.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Scaling.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Hyperplane.h \
+		/usr/include/eigen3/Eigen/src/Geometry/ParametrizedLine.h \
+		/usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Umeyama.h \
+		/usr/include/eigen3/Eigen/src/Geometry/arch/Geometry_SSE.h \
+		/usr/include/eigen3/Eigen/Eigenvalues \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h \
+		../canbus.h \
+		../imode.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QDebug \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qdebug.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhash.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmap.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtextstream.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiodevice.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlocale.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvariant.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qshareddata.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qset.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontiguouscache.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer_impl.h \
+		../oscillator.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QString
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controller.o ../controller.cpp
+
+imode.o: ../imode.cpp ../imode.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QObject \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnamespace.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobal.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig-bootstrapped.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtcore-config.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsystemdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qprocessordetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcompilerdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtypeinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsysinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlogging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qflags.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbasicatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_bootstrap.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qgenericatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_cxx11.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_msvc.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobalstatic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmutex.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnumeric.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qversiontagging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstring.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qchar.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qrefcount.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qarraydata.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringliteral.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringview.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringbuilder.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiterator.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhashfunctions.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpair.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvector.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainertools_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpoint.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearraylist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qregexp.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringmatcher.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcoreevent.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qscopedpointer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmetatype.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvarlengtharray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainerfwd.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QDebug \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qdebug.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhash.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmap.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtextstream.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiodevice.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlocale.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvariant.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qshareddata.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qset.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontiguouscache.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer_impl.h \
+		/usr/include/eigen3/Eigen/Dense \
+		/usr/include/eigen3/Eigen/Core \
+		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Macros.h \
+		/usr/include/eigen3/Eigen/src/Core/util/MKL_support.h \
+		/usr/include/eigen3/Eigen/src/misc/blas.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Constants.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Meta.h \
+		/usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
+		/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h \
+		/usr/include/eigen3/Eigen/src/Core/util/XprHelper.h \
+		/usr/include/eigen3/Eigen/src/Core/util/Memory.h \
+		/usr/include/eigen3/Eigen/src/Core/NumTraits.h \
+		/usr/include/eigen3/Eigen/src/Core/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX512/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX512/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AVX/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/AltiVec/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/NEON/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/ZVector/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/Half.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/PacketMathHalf.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/TypeCasting.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/PacketMath.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/MathFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/StlFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h \
+		/usr/include/eigen3/Eigen/src/Core/arch/CUDA/Complex.h \
+		/usr/include/eigen3/Eigen/src/Core/IO.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/BlockMethods.h \
+		/usr/include/eigen3/Eigen/src/Core/MatrixBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/Core/EigenBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Product.h \
+		/usr/include/eigen3/Eigen/src/Core/CoreEvaluators.h \
+		/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h \
+		/usr/include/eigen3/Eigen/src/Core/Assign.h \
+		/usr/include/eigen3/Eigen/src/Core/ArrayBase.h \
+		/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
+		/usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
+		/usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h \
+		/usr/include/eigen3/Eigen/src/Core/DenseStorage.h \
+		/usr/include/eigen3/Eigen/src/Core/NestByValue.h \
+		/usr/include/eigen3/Eigen/src/Core/ReturnByValue.h \
+		/usr/include/eigen3/Eigen/src/Core/NoAlias.h \
+		/usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Matrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Array.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseTernaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseNullaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/CwiseUnaryView.h \
+		/usr/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h \
+		/usr/include/eigen3/Eigen/src/Core/Dot.h \
+		/usr/include/eigen3/Eigen/src/Core/StableNorm.h \
+		/usr/include/eigen3/Eigen/src/Core/Stride.h \
+		/usr/include/eigen3/Eigen/src/Core/MapBase.h \
+		/usr/include/eigen3/Eigen/src/Core/Map.h \
+		/usr/include/eigen3/Eigen/src/Core/Ref.h \
+		/usr/include/eigen3/Eigen/src/Core/Block.h \
+		/usr/include/eigen3/Eigen/src/Core/VectorBlock.h \
+		/usr/include/eigen3/Eigen/src/Core/Transpose.h \
+		/usr/include/eigen3/Eigen/src/Core/DiagonalMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Diagonal.h \
+		/usr/include/eigen3/Eigen/src/Core/DiagonalProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/Redux.h \
+		/usr/include/eigen3/Eigen/src/Core/Visitor.h \
+		/usr/include/eigen3/Eigen/src/Core/Fuzzy.h \
+		/usr/include/eigen3/Eigen/src/Core/Swap.h \
+		/usr/include/eigen3/Eigen/src/Core/CommaInitializer.h \
+		/usr/include/eigen3/Eigen/src/Core/GeneralProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/Solve.h \
+		/usr/include/eigen3/Eigen/src/Core/Inverse.h \
+		/usr/include/eigen3/Eigen/src/Core/SolverBase.h \
+		/usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/Transpositions.h \
+		/usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/SelfAdjointView.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
+		/usr/include/eigen3/Eigen/src/Core/products/Parallelizer.h \
+		/usr/include/eigen3/Eigen/src/Core/ProductEvaluators.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/SolveTriangular.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h \
+		/usr/include/eigen3/Eigen/src/Core/BandMatrix.h \
+		/usr/include/eigen3/Eigen/src/Core/CoreIterators.h \
+		/usr/include/eigen3/Eigen/src/Core/ConditionEstimator.h \
+		/usr/include/eigen3/Eigen/src/Core/BooleanRedux.h \
+		/usr/include/eigen3/Eigen/src/Core/Select.h \
+		/usr/include/eigen3/Eigen/src/Core/VectorwiseOp.h \
+		/usr/include/eigen3/Eigen/src/Core/Random.h \
+		/usr/include/eigen3/Eigen/src/Core/Replicate.h \
+		/usr/include/eigen3/Eigen/src/Core/Reverse.h \
+		/usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix_BLAS.h \
+		/usr/include/eigen3/Eigen/src/Core/Assign_MKL.h \
+		/usr/include/eigen3/Eigen/src/Core/GlobalFunctions.h \
+		/usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
+		/usr/include/eigen3/Eigen/LU \
+		/usr/include/eigen3/Eigen/src/misc/Kernel.h \
+		/usr/include/eigen3/Eigen/src/misc/Image.h \
+		/usr/include/eigen3/Eigen/src/LU/FullPivLU.h \
+		/usr/include/eigen3/Eigen/src/LU/PartialPivLU.h \
+		/usr/include/eigen3/Eigen/src/misc/lapacke.h \
+		/usr/include/eigen3/Eigen/src/misc/lapacke_mangling.h \
+		/usr/include/eigen3/Eigen/src/LU/PartialPivLU_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/LU/Determinant.h \
+		/usr/include/eigen3/Eigen/src/LU/InverseImpl.h \
+		/usr/include/eigen3/Eigen/src/LU/arch/Inverse_SSE.h \
+		/usr/include/eigen3/Eigen/Cholesky \
+		/usr/include/eigen3/Eigen/Jacobi \
+		/usr/include/eigen3/Eigen/src/Jacobi/Jacobi.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LLT.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LDLT.h \
+		/usr/include/eigen3/Eigen/src/Cholesky/LLT_LAPACKE.h \
+		/usr/include/eigen3/Eigen/QR \
+		/usr/include/eigen3/Eigen/Householder \
+		/usr/include/eigen3/Eigen/src/Householder/Householder.h \
+		/usr/include/eigen3/Eigen/src/Householder/HouseholderSequence.h \
+		/usr/include/eigen3/Eigen/src/Householder/BlockHouseholder.h \
+		/usr/include/eigen3/Eigen/src/QR/HouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/FullPivHouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR.h \
+		/usr/include/eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
+		/usr/include/eigen3/Eigen/src/QR/HouseholderQR_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/QR/ColPivHouseholderQR_LAPACKE.h \
+		/usr/include/eigen3/Eigen/SVD \
+		/usr/include/eigen3/Eigen/src/misc/RealSvd2x2.h \
+		/usr/include/eigen3/Eigen/src/SVD/UpperBidiagonalization.h \
+		/usr/include/eigen3/Eigen/src/SVD/SVDBase.h \
+		/usr/include/eigen3/Eigen/src/SVD/JacobiSVD.h \
+		/usr/include/eigen3/Eigen/src/SVD/BDCSVD.h \
+		/usr/include/eigen3/Eigen/src/SVD/JacobiSVD_LAPACKE.h \
+		/usr/include/eigen3/Eigen/Geometry \
+		/usr/include/eigen3/Eigen/src/Geometry/OrthoMethods.h \
+		/usr/include/eigen3/Eigen/src/Geometry/EulerAngles.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Homogeneous.h \
+		/usr/include/eigen3/Eigen/src/Geometry/RotationBase.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Rotation2D.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Quaternion.h \
+		/usr/include/eigen3/Eigen/src/Geometry/AngleAxis.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Transform.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Translation.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Scaling.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Hyperplane.h \
+		/usr/include/eigen3/Eigen/src/Geometry/ParametrizedLine.h \
+		/usr/include/eigen3/Eigen/src/Geometry/AlignedBox.h \
+		/usr/include/eigen3/Eigen/src/Geometry/Umeyama.h \
+		/usr/include/eigen3/Eigen/src/Geometry/arch/Geometry_SSE.h \
+		/usr/include/eigen3/Eigen/Eigenvalues \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h \
+		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imode.o ../imode.cpp
 
 inversekinematics.o: ../inversekinematics.cpp ../inversekinematics.h \
 		/usr/include/eigen3/Eigen/Dense \
@@ -1032,8 +2169,9 @@ inversekinematics.o: ../inversekinematics.cpp ../inversekinematics.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o inversekinematics.o ../inversekinematics.cpp
 
-main.o: ../main.cpp ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/QGuiApplication \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qguiapplication.h \
+main.o: ../main.cpp ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets/QApplication \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets/qapplication.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets/qtwidgetsglobal.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qtguiglobal.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobal.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig-bootstrapped.h \
@@ -1057,6 +2195,7 @@ main.o: ../main.cpp ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnumeric.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qversiontagging.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qtgui-config.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets/qtwidgets-config.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcoreapplication.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstring.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qchar.h \
@@ -1092,33 +2231,84 @@ main.o: ../main.cpp ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qeventloop.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qwindowdefs.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qwindowdefs_win.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qinputmethod.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlocale.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsize.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmargins.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qcursor.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets/qdesktopwidget.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets/qwidget.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qpaintdevice.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qrect.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qpalette.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qcolor.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qrgb.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qrgba64.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qbrush.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qmatrix.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qpolygon.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qregion.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qdatastream.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiodevice.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qline.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qtransform.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qimage.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qpixelformat.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qpixmap.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qshareddata.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhash.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qfont.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qfontmetrics.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qfontinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtWidgets/qsizepolicy.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qkeysequence.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qevent.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvariant.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmap.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qdebug.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhash.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtextstream.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiodevice.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlocale.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qset.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontiguouscache.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qshareddata.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer_impl.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsize.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmargins.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/QQmlApplicationEngine \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmlapplicationengine.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmlengine.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qurl.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qurlquery.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qjsengine.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qjsvalue.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qfile.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qfiledevice.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qvector2d.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qtouchdevice.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qguiapplication.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qinputmethod.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick/QQuickView \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick/qquickview.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick/qquickwindow.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick/qtquickglobal.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qtqmlglobal.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qtqml-config.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtNetwork/qtnetworkglobal.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtNetwork/qtnetwork-config.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmldebug.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick/qtquick-config.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick/qsgrendererinterface.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick/qsgnode.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQuick/qsggeometry.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qopengl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qt_windows.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qopengles2ext.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qopenglext.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QRectF \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/QMatrix4x4 \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qmatrix4x4.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qvector3d.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qvector4d.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qquaternion.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qgenericmatrix.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qwindow.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QObject \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QEvent \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QMargins \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QRect \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qsurface.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qsurfaceformat.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtGui/qicon.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqml.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmlprivate.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmlparserstatus.h \
@@ -1126,19 +2316,21 @@ main.o: ../main.cpp ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmlpropertyvaluesource.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpointer.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmetaobject.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmldebug.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QDir \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qdir.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qfileinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/QQmlEngine \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmlengine.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qjsengine.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qjsvalue.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmlerror.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/QQmlContext \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtQml/qqmlcontext.h \
-		../thread.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QThread \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qthread.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qdeadlinetimer.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qelapsedtimer.h \
-		../canbus.h \
 		../oscillator.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QObject \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QDebug \
-		../inversekinematics.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QString \
+		../imode.h \
 		/usr/include/eigen3/Eigen/Dense \
 		/usr/include/eigen3/Eigen/Core \
 		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -1345,7 +2537,13 @@ main.o: ../main.cpp ../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5
 		/usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h \
-		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h
+		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h \
+		../controller.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QTimer \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtimer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbasictimer.h \
+		../inversekinematics.h \
+		../canbus.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 oscillator.o: ../oscillator.cpp ../oscillator.h \
@@ -1414,83 +2612,9 @@ oscillator.o: ../oscillator.cpp ../oscillator.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qset.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontiguouscache.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer_impl.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o oscillator.o ../oscillator.cpp
-
-thread.o: ../thread.cpp ../thread.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QThread \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qthread.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnamespace.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobal.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig-bootstrapped.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtcore-config.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsystemdetection.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qprocessordetection.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcompilerdetection.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtypeinfo.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsysinfo.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlogging.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qflags.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbasicatomic.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_bootstrap.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qgenericatomic.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_cxx11.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_msvc.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobalstatic.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmutex.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnumeric.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qversiontagging.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs_impl.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstring.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qchar.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearray.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qrefcount.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qarraydata.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringliteral.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringalgorithms.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringview.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringbuilder.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlist.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qalgorithms.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiterator.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhashfunctions.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpair.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvector.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainertools_impl.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpoint.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearraylist.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringlist.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qregexp.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringmatcher.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcoreevent.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qscopedpointer.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmetatype.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvarlengtharray.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainerfwd.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject_impl.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qdeadlinetimer.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qelapsedtimer.h \
-		../canbus.h \
-		../oscillator.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QObject \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QDebug \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qdebug.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhash.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmap.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtextstream.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiodevice.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlocale.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvariant.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qshareddata.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qset.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontiguouscache.h \
-		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer.h \
 		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsharedpointer_impl.h \
-		../inversekinematics.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QString \
+		../imode.h \
 		/usr/include/eigen3/Eigen/Dense \
 		/usr/include/eigen3/Eigen/Core \
 		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -1698,13 +2822,75 @@ thread.o: ../thread.cpp ../thread.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o thread.o ../thread.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o oscillator.o ../oscillator.cpp
+
+worker.o: ../worker.cpp ../worker.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/QObject \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnamespace.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobal.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig-bootstrapped.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qconfig.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtcore-config.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsystemdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qprocessordetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcompilerdetection.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qtypeinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qsysinfo.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlogging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qflags.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbasicatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_bootstrap.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qgenericatomic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_cxx11.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qatomic_msvc.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qglobalstatic.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmutex.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qnumeric.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qversiontagging.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobjectdefs_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstring.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qchar.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qrefcount.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qarraydata.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringliteral.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringview.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringbuilder.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qalgorithms.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qiterator.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qhashfunctions.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpair.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvector.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainertools_impl.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qpoint.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qbytearraylist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringlist.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qregexp.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qstringmatcher.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcoreevent.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qscopedpointer.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qmetatype.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qvarlengtharray.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qcontainerfwd.h \
+		../../Documents/Qt-CrossCompile-RaspberryPi/raspberrypi4/qt5.15/include/QtCore/qobject_impl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o worker.o ../worker.cpp
 
 qrc_qml.o: qrc_qml.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_qml.o qrc_qml.cpp
 
+moc_controller.o: moc_controller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_controller.o moc_controller.cpp
+
 moc_oscillator.o: moc_oscillator.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_oscillator.o moc_oscillator.cpp
+
+moc_worker.o: moc_worker.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_worker.o moc_worker.cpp
 
 ####### Install
 
