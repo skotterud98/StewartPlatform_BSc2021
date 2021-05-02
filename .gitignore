@@ -52,7 +52,7 @@ compile_commands.json
 *creator.user*
 
 # Release files
-/release
+/Release
 
 # Build and test directory
 /Build
