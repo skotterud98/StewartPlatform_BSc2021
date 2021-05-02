@@ -54,5 +54,6 @@ compile_commands.json
 # Release files
 /release
 
-# Build folder
+# Build and test directory
 /Build
+/Test
