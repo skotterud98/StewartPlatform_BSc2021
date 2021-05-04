@@ -21,17 +21,17 @@ CANbus::CANbus()
     }
 
 
-    this->tx_len1.can_id = 0xA0;
-    this->tx_len1.can_dlc = 6;
+    tx_len1.can_id = 0xA0;
+    tx_len1.can_dlc = 6;
 
-    this->tx_len2.can_id = 0xA1;
-    this->tx_len2.can_dlc = 6;
+    tx_len2.can_id = 0xA1;
+    tx_len2.can_dlc = 6;
 
-    this->tx_vel1.can_id = 0xA2;
-    this->tx_vel1.can_dlc = 7;
+    tx_vel1.can_id = 0xA2;
+    tx_vel1.can_dlc = 7;
 
-    this->tx_vel2.can_id = 0xA3;
-    this->tx_vel2.can_dlc = 7;
+    tx_vel2.can_id = 0xA3;
+    tx_vel2.can_dlc = 7;
 }
 
 
@@ -66,42 +66,45 @@ float* CANbus::send_data(const double stroke_len[], const double stroke_vel[])
     }
 
     // Length
-    this->tx_len1.data[0] = (uint8_t)(out_len[0] >> 8);   // Actuator 1
-    this->tx_len1.data[1] = (uint8_t) out_len[0];
-    this->tx_len1.data[2] = (uint8_t)(out_len[1] >> 8);   // Actuator 2
-    this->tx_len1.data[3] = (uint8_t) out_len[1];
-    this->tx_len1.data[4] = (uint8_t)(out_len[2] >> 8);   // Actuator 3
-    this->tx_len1.data[5] = (uint8_t) out_len[2];
+    tx_len1.data[0] = (uint8_t)(out_len[0] >> 8);   // Actuator 1
+    tx_len1.data[1] = (uint8_t) out_len[0];
+    tx_len1.data[2] = (uint8_t)(out_len[1] >> 8);   // Actuator 2
+    tx_len1.data[3] = (uint8_t) out_len[1];
+    tx_len1.data[4] = (uint8_t)(out_len[2] >> 8);   // Actuator 3
+    tx_len1.data[5] = (uint8_t) out_len[2];
 
-    this->tx_len2.data[0] = (uint8_t)(out_len[3] >> 8);   // Actuator 4
-    this->tx_len2.data[1] = (uint8_t) out_len[3];
-    this->tx_len2.data[2] = (uint8_t)(out_len[4] >> 8);   // Actuator 5
-    this->tx_len2.data[3] = (uint8_t) out_len[4];
-    this->tx_len2.data[4] = (uint8_t)(out_len[5] >> 8);   // Actuator 6
-    this->tx_len2.data[5] = (uint8_t) out_len[5];
+    tx_len2.data[0] = (uint8_t)(out_len[3] >> 8);   // Actuator 4
+    tx_len2.data[1] = (uint8_t) out_len[3];
+    tx_len2.data[2] = (uint8_t)(out_len[4] >> 8);   // Actuator 5
+    tx_len2.data[3] = (uint8_t) out_len[4];
+    tx_len2.data[4] = (uint8_t)(out_len[5] >> 8);   // Actuator 6
+    tx_len2.data[5] = (uint8_t) out_len[5];
 
     // Velocity
-    this->tx_vel1.data[0] = (uint8_t)(out_vel[0] >> 8);   // Actuator 1
-    this->tx_vel1.data[1] = (uint8_t) out_vel[0];
-    this->tx_vel1.data[2] = (uint8_t)(out_vel[1] >> 8);   // Actuator 2
-    this->tx_vel1.data[3] = (uint8_t) out_vel[1];
-    this->tx_vel1.data[4] = (uint8_t)(out_vel[2] >> 8);   // Actuator 3
-    this->tx_vel1.data[5] = (uint8_t) out_vel[2];
-    this->tx_vel1.data[6] = sign & 0b000111;
+    tx_vel1.data[0] = (uint8_t)(out_vel[0] >> 8);   // Actuator 1
+    tx_vel1.data[1] = (uint8_t) out_vel[0];
+    tx_vel1.data[2] = (uint8_t)(out_vel[1] >> 8);   // Actuator 2
+    tx_vel1.data[3] = (uint8_t) out_vel[1];
+    tx_vel1.data[4] = (uint8_t)(out_vel[2] >> 8);   // Actuator 3
+    tx_vel1.data[5] = (uint8_t) out_vel[2];
+    tx_vel1.data[6] = sign & 0b000111;
 
-    this->tx_vel2.data[0] = (uint8_t)(out_vel[3] >> 8);   // Actuator 4
-    this->tx_vel2.data[1] = (uint8_t) out_vel[3];
-    this->tx_vel2.data[2] = (uint8_t)(out_vel[4] >> 8);   // Actuator 5
-    this->tx_vel2.data[3] = (uint8_t) out_vel[4];
-    this->tx_vel2.data[4] = (uint8_t)(out_vel[5] >> 8);   // Actuator 6
-    this->tx_vel2.data[5] = (uint8_t) out_vel[5];
-    this->tx_vel2.data[6] = sign >> 3;
+    tx_vel2.data[0] = (uint8_t)(out_vel[3] >> 8);   // Actuator 4
+    tx_vel2.data[1] = (uint8_t) out_vel[3];
+    tx_vel2.data[2] = (uint8_t)(out_vel[4] >> 8);   // Actuator 5
+    tx_vel2.data[3] = (uint8_t) out_vel[4];
+    tx_vel2.data[4] = (uint8_t)(out_vel[5] >> 8);   // Actuator 6
+    tx_vel2.data[5] = (uint8_t) out_vel[5];
+    tx_vel2.data[6] = sign >> 3;
 
 
-    write(this->socket_, &this->tx_len1, sizeof(struct can_frame));
-    write(this->socket_, &this->tx_len2, sizeof(struct can_frame));
-    write(this->socket_, &this->tx_vel1, sizeof(struct can_frame));
-    write(this->socket_, &this->tx_vel2, sizeof(struct can_frame));
+    write(this->socket_, &tx_len1, sizeof(struct can_frame));
+    usleep(1);
+    write(this->socket_, &tx_len2, sizeof(struct can_frame));
+    usleep(1);
+    write(this->socket_, &tx_vel1, sizeof(struct can_frame));
+    usleep(1);
+    write(this->socket_, &tx_vel2, sizeof(struct can_frame));
 
 
     static float feedback[6] = {0., 0., 0., 0., 0., 0.};

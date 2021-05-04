@@ -3,7 +3,7 @@ import QtQuick.Controls 2.0
 
 TabButton {
     id: tabButton
-    text: qsTr("TabButton")
+    text: "TabButton"
     background: Rectangle {
         height: parent.height
         width: parent.width

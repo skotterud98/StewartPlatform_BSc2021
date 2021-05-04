@@ -6,10 +6,11 @@ Button {
     text: qsTr("Button")
 
     background: Rectangle {
+        id: myBackground
         height: parent.height
         width: parent.width
-        color: myButton.pressed ? "dimgrey" : "#1a1a1a"
-        opacity: 0.3
+        color: myButton.pressed ? "dimgrey" : "#3a3a3a"
+        opacity: 0.8
         radius: 5
     }
 

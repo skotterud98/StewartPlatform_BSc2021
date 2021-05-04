@@ -6,6 +6,8 @@ Slider {
     property string sliderUnit: qsTr("[ ]")
     property string valueLabel: mySlider.value
 
+    property bool valueVisible: true
+
     property bool phase: false
 
     id: mySlider
@@ -65,5 +67,6 @@ Slider {
             horizontalCenter: mySlider.horizontalCenter
             horizontalCenterOffset: 150
         }
+        visible: mySlider.valueVisible
     }
 }

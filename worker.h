@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QTimer>
 #include <QDebug>
+#include <QThread>
+#include <QVector>
 
 #include <Eigen/Dense>
 #include "inversekinematics.h"
@@ -14,21 +16,22 @@ class Worker : public QObject
 {
     Q_OBJECT
 public:
-    explicit Worker(IMode* m_program, QObject *parent = nullptr);
+    explicit Worker(IMode* program, QObject *parent = nullptr);
 
 public slots:
-
-    void run();
+    void execute();
+    void setWorkerProgram(IMode* newWorkerProgram);
+    void runTimer(const bool& run);
 
 signals:
-    //void resultReady();
+    void strokeRefChanged(const QVector<double>& newStrokeRef);
+    void warningChanged(const bool& newWarningState);
 
 private:
+    IMode* m_runningProgram;
     QTimer* m_timer;
-    IMode* m_programWorker;
-    CANbus* m_can;
-    InverseKinematics* m_ik;
-
+    CANbus m_can;
+    InverseKinematics m_ik;
 };
 
 #endif // WORKER_H

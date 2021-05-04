@@ -81,7 +81,7 @@ Page {
             }
             ItemDelegate {
                 id: joystickDelegate
-                text: qsTr("Joystick")
+                text: "Joystick"
                 width: parent.width
                 contentItem: Text {
                     text: joystickDelegate.text
@@ -125,7 +125,7 @@ Page {
             }
             ItemDelegate {
                 id: graphsDelegate
-                text: "Input Plot"
+                text: "Setpoint Plot"
                 width: parent.width
                 contentItem: Text {
                     text: graphsDelegate.text
@@ -141,13 +141,13 @@ Page {
 
                 onClicked: {
                     if(stackView.currentItem.title !== graphsDelegate.text)
-                        stackView.push("qrc:/qml/InputPlot.qml")
+                        stackView.push("qrc:/qml/SetpointPlot.qml")
                     drawer.close()
                 }
             }
             ItemDelegate {
                 id: strokePlotDelegate
-                text: "Stroke Plot"
+                text: "Stroke Length"
                 width: parent.width
                 contentItem: Text {
                     text: strokePlotDelegate.text
@@ -163,7 +163,7 @@ Page {
 
                 onClicked: {
                     if(stackView.currentItem.title !== strokePlotDelegate.text)
-                        stackView.push("qrc:/qml/StrokePlot.qml")
+                        stackView.push("qrc:/qml/StrokeLength.qml")
                     drawer.close()
                 }
             }

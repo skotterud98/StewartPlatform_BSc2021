@@ -27,7 +27,7 @@ InverseKinematics::InverseKinematics() :
 }
 
 
-void InverseKinematics::calc_output(Eigen::Matrix<double, 2, 6>& _input)
+void InverseKinematics::calc_legs(Eigen::Matrix<double, 2, 6>& _input)
 {
     static Eigen::Vector3d p;
     static double phi_sin, phi_cos, theta_sin, theta_cos, psi_sin, psi_cos;

@@ -5,6 +5,7 @@
 #include <QQmlContext>
 
 #include "oscillator.h"
+#include "joystick.h"
 #include "controller.h"
 
 int main(int argc, char *argv[])
@@ -15,9 +16,11 @@ int main(int argc, char *argv[])
     QQmlContext* context = viewer.engine()->rootContext();
 
     Oscillator* oscillator = new Oscillator;
-    Controller* controller = new Controller(oscillator);
+    Joystick* joystick = new Joystick;
+    Controller* controller = new Controller(oscillator, joystick);
 
     context->setContextProperty("_oscillator", oscillator);
+    context->setContextProperty("_joystick", joystick);
     context->setContextProperty("_controller", controller);
 
 

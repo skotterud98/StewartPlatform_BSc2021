@@ -8,7 +8,7 @@ import "Components" as MyComponents
 Page {
     width: 800
     height: 430
-    title: "Input Plot"
+    title: "Setpoint Plot"
     MyComponents.BackgroundPage {
         anchors.fill: parent
 
@@ -28,6 +28,8 @@ Page {
                 animationOptions: ChartView.NoAnimation
                 antialiasing: true
                 backgroundColor: "#1a1a1a"
+
+                property double heaveBias: 48.5
 
             }
         }
@@ -83,6 +85,7 @@ Page {
                     transChart.axisY().gridVisible = false
                     transChart.axisY().labelFormat = "%.0f"
 
+                    transChart.axisX().labelFormat = "%.0f"
                     transChart.axisX().gridVisible = false
                     transChart.axisX().labelsVisible = false
                 }
@@ -106,7 +109,7 @@ Page {
                     rotChart.axisY().labelFormat = "%.0f"
 
                     rotChart.axisX().labelFormat = "%.0f"
-                    rotChart.axisX().labelVisible = true
+                    rotChart.axisX().labelsVisible = true
                     rotChart.axisX().gridVisible = false
                 }
                 if (!pitch) {
@@ -121,7 +124,7 @@ Page {
 
                 surge.append(Math.round(time_ * 10) / 10, Math.round(_controller.surgeOut * 10) / 10)
                 sway.append(Math.round(time_ * 10) / 10, Math.round(_controller.swayOut * 10) / 10)
-                heave.append(Math.round(time_ * 10) / 10, Math.round((_controller.heaveOut - _controller.heaveBias) * 10) / 10)
+                heave.append(Math.round(time_ * 10) / 10, Math.round((_controller.heaveOut - transChart.heaveBias) * 10) / 10)
                 roll.append(Math.round(time_ * 10) / 10, Math.round(_controller.rollOut * 10) / 10)
                 pitch.append(Math.round(time_ * 10) / 10, Math.round(_controller.pitchOut * 10) / 10)
                 yaw.append(Math.round(time_ * 10) / 10, Math.round(_controller.yawOut * 10) / 10)

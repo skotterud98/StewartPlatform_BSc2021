@@ -10,8 +10,6 @@
 #include <cmath>
 #include <Eigen/Dense>
 
-#define PI 3.14159265358979323846
-
 
 class Oscillator : public QObject, public IMode
 {
@@ -49,55 +47,54 @@ public:
     explicit Oscillator(QObject *parent = nullptr);
 
     Eigen::Matrix<double, 2, 6>& sample() override;
-    double getTime() override;
+    //double getTime() override;
     double getInputPos(uint8_t index) override;
     void reset() override;
-    double getHeaveBias() override;
 
     // Get-set functions for amplitude sliders
     double getSurgeAmp() const;
-    void setSurgeAmp(const double &sliderVal);
+    void setSurgeAmp(const double& sliderVal);
     double getSwayAmp() const;
-    void setSwayAmp(const double &sliderVal);
+    void setSwayAmp(const double& sliderVal);
     double getHeaveAmp() const;
-    void setHeaveAmp(const double &sliderVal);
+    void setHeaveAmp(const double& sliderVal);
     double getRollAmp() const;
-    void setRollAmp(const double &sliderVal);
+    void setRollAmp(const double& sliderVal);
     double getPitchAmp() const;
-    void setPitchAmp(const double &sliderVal);
+    void setPitchAmp(const double& sliderVal);
     double getYawAmp() const;
-    void setYawAmp(const double &sliderVal);
+    void setYawAmp(const double& sliderVal);
 
     // Get-set functions for phase sliders
     double getSurgePhase() const;
-    void setSurgePhase(const double &sliderVal);
+    void setSurgePhase(const double& sliderVal);
     double getSwayPhase() const;
-    void setSwayPhase(const double &sliderVal);
+    void setSwayPhase(const double& sliderVal);
     double getHeavePhase() const;
-    void setHeavePhase(const double &sliderVal);
+    void setHeavePhase(const double& sliderVal);
     double getRollPhase() const;
-    void setRollPhase(const double &sliderVal);
+    void setRollPhase(const double& sliderVal);
     double getPitchPhase() const;
-    void setPitchPhase(const double &sliderVal);
+    void setPitchPhase(const double& sliderVal);
     double getYawPhase() const;
-    void setYawPhase(const double &sliderVal);
+    void setYawPhase(const double& sliderVal);
 
     // Get-set functions for freq sliders
     double getSurgeFreq() const;
-    void setSurgeFreq(const double &sliderVal);
+    void setSurgeFreq(const double& sliderVal);
     double getSwayFreq() const;
-    void setSwayFreq(const double &sliderVal);
+    void setSwayFreq(const double& sliderVal);
     double getHeaveFreq() const;
-    void setHeaveFreq(const double &sliderVal);
+    void setHeaveFreq(const double& sliderVal);
     double getRollFreq() const;
-    void setRollFreq(const double &sliderVal);
+    void setRollFreq(const double& sliderVal);
     double getPitchFreq() const;
-    void setPitchFreq(const double &sliderVal);
+    void setPitchFreq(const double& sliderVal);
     double getYawFreq() const;
-    void setYawFreq(const double &sliderVal);
+    void setYawFreq(const double& sliderVal);
 
     bool getRun() const;
-    void setRun(const bool &switchState);
+    void setRun(const bool& switchState);
 
 public slots:
     void resetAmp();
@@ -106,31 +103,31 @@ public slots:
 
 signals:
     // Amplitude signals
-    void surgeAmpChanged(const double &newSurgeAmp);
-    void swayAmpChanged(const double &newSwayAmp);
-    void heaveAmpChanged(const double &newHeaveAmp);
-    void rollAmpChanged(const double &newRollAmp);
-    void pitchAmpChanged(const double &newPitchAmp);
-    void yawAmpChanged(const double &newYawAmp);
+    void surgeAmpChanged(const double& newSurgeAmp);
+    void swayAmpChanged(const double& newSwayAmp);
+    void heaveAmpChanged(const double& newHeaveAmp);
+    void rollAmpChanged(const double& newRollAmp);
+    void pitchAmpChanged(const double& newPitchAmp);
+    void yawAmpChanged(const double& newYawAmp);
 
     // Phase signals
-    void surgePhaseChanged(const double &newSurgePhase);
-    void swayPhaseChanged(const double &newSwayPhase);
-    void heavePhaseChanged(const double &newHeavePhase);
-    void rollPhaseChanged(const double &newRollPhase);
-    void pitchPhaseChanged(const double &newPitchPhase);
-    void yawPhaseChanged(const double &newYawPhase);
+    void surgePhaseChanged(const double& newSurgePhase);
+    void swayPhaseChanged(const double& newSwayPhase);
+    void heavePhaseChanged(const double& newHeavePhase);
+    void rollPhaseChanged(const double& newRollPhase);
+    void pitchPhaseChanged(const double& newPitchPhase);
+    void yawPhaseChanged(const double& newYawPhase);
 
     // Frequency signals
-    void surgeFreqChanged(const double &newSurgeFreq);
-    void swayFreqChanged(const double &newSwayFreq);
-    void heaveFreqChanged(const double &newHeaveFreq);
-    void rollFreqChanged(const double &newHeaveFreq);
-    void pitchFreqChanged(const double &newPitchFreq);
-    void yawFreqChanged(const double &newYawFreq);
+    void surgeFreqChanged(const double& newSurgeFreq);
+    void swayFreqChanged(const double& newSwayFreq);
+    void heaveFreqChanged(const double& newHeaveFreq);
+    void rollFreqChanged(const double& newHeaveFreq);
+    void pitchFreqChanged(const double& newPitchFreq);
+    void yawFreqChanged(const double& newYawFreq);
 
     // Run switch signal
-    void runChanged(const bool &newRunState);
+    void runChanged(const bool& newRunState);
 
 private:
     enum SineParam { Amp = 0, Phase = 1, Freq = 2 };

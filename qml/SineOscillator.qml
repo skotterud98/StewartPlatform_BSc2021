@@ -3,6 +3,7 @@ import QtQml 2.15
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Dialogs 1.2
+import QtQuick.Extras 1.4
 import "Components" as Components
 
 Page {
@@ -30,6 +31,13 @@ Page {
         property string freqUnit: "Hz"
         property double freqStep: 0.05
 
+        StatusIndicator {
+            id: statusInd
+            x: 700
+            y: 370
+            active: true
+            color: _controller.runningProgram == "Sine Oscillator" ? "green" : "red"
+        }
 
         // Amplitude sliders
         Rectangle {
@@ -263,20 +271,16 @@ Page {
             }
         }
 
-        /*
-        MessageDialog {
-            id: frequencyMsg
+
+        Text {
+            id: warningMsg
             x: 45
-            y: 30
-            title: " !!! "                  ##################
-            text: "hello test"
-            icon: StandardIcon.Question
-            onAccepted: {
-                console.log("test success")
-            }
-            Component.onCompleted: visible = true
+            text: "WARNING: Stroke length out of range"
+            color: "#ff0000"
+            font.bold: true
+            visible: _controller.warning ? true : false
         }
-        */
+
 
         states: [
             State {

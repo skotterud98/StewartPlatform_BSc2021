@@ -50,22 +50,21 @@ double Oscillator::getInputPos(uint8_t index)
     return m_dof(POS, index);
 }
 
+/*
 double Oscillator::getTime()
 {
     return m_time;
 }
-
+*/
 void Oscillator::reset()
 {
     resetAmp();
     resetPhase();
     resetFreq();
+    m_time = 0.;
+    m_run = true;
 }
 
-double Oscillator::getHeaveBias()
-{
-    return m_heaveBias;
-}
 
 /* ################################# Amplitude Sliders ##########################################*/
 

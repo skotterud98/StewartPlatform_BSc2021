@@ -8,13 +8,15 @@
         <file>qml/images/Faculty-of-Engineering-and-Science-positive.png</file>
         <file>qml/Home.qml</file>
         <file>qml/Info.qml</file>
-        <file>qml/Joystick.qml</file>
         <file>qml/main.qml</file>
         <file>qml/qtquickcontrols2.conf</file>
         <file>qml/SineOscillator.qml</file>
-        <file>qml/StrokePlot.qml</file>
-        <file>qml/InputPlot.qml</file>
+        <file>qml/StrokeLength.qml</file>
+        <file>qml/SetpointPlot.qml</file>
         <file>qml/WaveSimulator.qml</file>
         <file>qml/Components/MyButton.qml</file>
+        <file>qml/Joystick.qml</file>
+        <file>qml/images/joyFinger.png</file>
+        <file>qml/images/joyBackground.png</file>
     </qresource>
 </RCC>

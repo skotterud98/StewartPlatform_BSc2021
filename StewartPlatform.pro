@@ -11,16 +11,21 @@ HEADERS += \
         controller.h \
         imode.h \
         inversekinematics.h \
+        joystick.h \
+        neutral.h \
         oscillator.h \
+        park.h \
         worker.h
 
 SOURCES += \
         canbus.cpp \
         controller.cpp \
-        imode.cpp \
         inversekinematics.cpp \
+        joystick.cpp \
         main.cpp \
+        neutral.cpp \
         oscillator.cpp \
+        park.cpp \
         worker.cpp
 
 RESOURCES += qml.qrc
