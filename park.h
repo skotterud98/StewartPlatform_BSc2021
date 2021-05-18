@@ -9,7 +9,6 @@ public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
     Park();
 
-    //double getTime() override;
     double getInputPos(uint8_t index) override;
     void reset() override;
     Eigen::Matrix<double, 2, 6>& sample() override;

@@ -70,8 +70,8 @@ Eigen::Matrix<double, 2, 6>& Joystick::sample()
     m_roll = new_K * roll_in + prev_K * m_roll;
     m_pitch = new_K * pitch_in + prev_K * m_pitch;
 
-    m_dof(POS, 3) = m_roll;
-    m_dof(POS, 4) = m_pitch;
+    m_dof(POS, ROLL) = m_roll;
+    m_dof(POS, PITCH) = m_pitch;
 
     return m_dof;
 }

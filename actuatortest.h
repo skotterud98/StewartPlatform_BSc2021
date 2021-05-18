@@ -1,20 +1,20 @@
-#ifndef NEUTRAL_H
-#define NEUTRAL_H
+#ifndef ACTUATORTEST_H
+#define ACTUATORTEST_H
 
 #include "imode.h"
 
-class Neutral : public IMode
+class ActuatorTest : public IMode
 {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-    Neutral();
+    ActuatorTest();
 
     double getInputPos(uint8_t index) override;
     void reset() override;
     Eigen::Matrix<double, 2, 6>& sample() override;
 
 private:
-    const double m_neutralPosition;
+
 };
 
-#endif // NEUTRAL_H
+#endif // ACTUATORTEST_H

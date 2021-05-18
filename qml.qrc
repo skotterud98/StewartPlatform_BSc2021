@@ -18,5 +18,6 @@
         <file>qml/Joystick.qml</file>
         <file>qml/images/joyFinger.png</file>
         <file>qml/images/joyBackground.png</file>
+        <file>qml/images/uia1.png</file>
     </qresource>
 </RCC>

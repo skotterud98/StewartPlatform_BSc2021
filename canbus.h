@@ -12,6 +12,8 @@
 #include <linux/can.h>
 #include <linux/can/raw.h>
 
+#include <QDebug>
+
 
 class CANbus
 {
@@ -19,7 +21,10 @@ public:
     CANbus();
     ~CANbus();
 
-    float* send_data(const double stroke_len[], const double stroke_vel[]);
+    void send_data(const double stroke_len[], const double stroke_vel[]);
+    bool recv_data(double stroke_len[], uint8_t* ampere);
+
+    void rx_flush();
 
 private:
     int socket_;

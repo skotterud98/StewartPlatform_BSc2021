@@ -5,20 +5,11 @@ Worker::Worker(IMode* program, QObject *parent)
 {
     m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &Worker::execute);
+}
 
-
-
-
-    /*
-    Worker* worker = new Worker(m_workerProgram);
-    worker->moveToThread(&workerThread);
-    //connect(&workerThread, &QThread::finished, worker, &QObject::deleteLater);
-    workerThread.start();
-
-    connect(worker, &Worker::strokeRefChanged, this, &Controller::setStrokeRef);
-    connect(worker, &Worker::warningChanged, this, &Controller::setWarningState);
-    connect(this, &Controller::workerProgramChanged, worker, &Worker::setWorkerProgram);
-    connect(this, &Controller::activatedChanged, worker, &Worker::runTimer);*/
+Worker::~Worker()
+{
+    delete m_timer;
 }
 
 void Worker::execute()
@@ -27,8 +18,14 @@ void Worker::execute()
     static Eigen::Matrix<double, 2, 6> output;
     static double len[6] = { 0., 0., 0., 0., 0., 0. };
     static double vel[6] = { 0., 0., 0., 0., 0., 0. };
+    static double fb_len[6];
+    static uint8_t current;
     static QVector<double> strokeRef;
-    static bool warn = false;
+    static QVector<double> strokeFb;
+    static uint8_t rxErrCount = 0;
+
+
+    bool warn = false;
 
     msgCount++;
 
@@ -41,10 +38,15 @@ void Worker::execute()
         len[i] = output(0, i);
         vel[i] = output(1, i);
 
-        warn = len[i] > 0.089 || len[i] < 0.001;
+        warn |= (len[i] > 0.088 || len[i] < 0.002);
     }
 
     m_can.send_data(len, vel);
+    usleep(500);
+
+    bool read_succeed = true;
+
+    if (!(read_succeed |= m_can.recv_data(fb_len, &current))) rxErrCount++;
 
 
     if (msgCount >= 10)
@@ -52,10 +54,22 @@ void Worker::execute()
         for (uint8_t i = 0; i < 6; i++)
         {
             strokeRef.insert(i, len[i] * 1000.);
+
+            strokeFb.insert(i, fb_len[i] * 1000.);
         }
         emit strokeRefChanged(strokeRef);
+        emit strokeFbChanged(strokeFb);
         emit warningChanged(warn);
+        emit ampereChanged(current);
+        emit canReadChanged(read_succeed);
         msgCount = 0;
+    }
+
+
+    if (rxErrCount >= 5)
+    {
+        m_can.rx_flush();
+        rxErrCount = 0;
     }
 }
 

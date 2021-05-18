@@ -3,12 +3,13 @@
 Controller::Controller(Oscillator* oscillator, Joystick* joystick, QObject* parent)
     : QObject(parent), m_oscillator(oscillator), m_joystick(joystick)
 {
+    m_ampere = 0;
+
     m_warning = false;
+    m_activated = false;
+    m_canReadState = false;
 
-    m_neutral = new Neutral;
-    m_park = new Park;
-
-    m_workerProgram = m_park;
+    m_workerProgram = &m_park;
     m_runningProgram = "Park";
 
     Worker* worker = new Worker(m_workerProgram);
@@ -17,7 +18,10 @@ Controller::Controller(Oscillator* oscillator, Joystick* joystick, QObject* pare
     workerThread.start();
 
     connect(worker, &Worker::strokeRefChanged, this, &Controller::setStrokeRef);
+    connect(worker, &Worker::strokeFbChanged, this, &Controller::setStrokeFb);
     connect(worker, &Worker::warningChanged, this, &Controller::setWarningState);
+    connect(worker, &Worker::ampereChanged, this, &Controller::setAmpere);
+    connect(worker, &Worker::canReadChanged, this, &Controller::setCanReadState);
     connect(this, &Controller::workerProgramChanged, worker, &Worker::setWorkerProgram);
     connect(this, &Controller::activatedChanged, worker, &Worker::runTimer);
 }
@@ -34,12 +38,13 @@ void Controller::setProgram(const QString& newProgram)
 
     if (newProgram == "Park")
     {
-        m_workerProgram = m_park;
+        m_workerProgram = &m_park;
         m_runningProgram = "Park";
     }
     if (newProgram == "Neutral")
     {
-        m_workerProgram = m_neutral;
+        if (m_runningProgram == "Park") m_workerProgram = &m_rampneutral;
+        else m_workerProgram = &m_neutral;
         m_runningProgram = "Neutral";
     }
     if (newProgram == "Sine Oscillator")
@@ -52,7 +57,6 @@ void Controller::setProgram(const QString& newProgram)
         m_workerProgram = m_joystick;
         m_runningProgram = "Joystick";
     }
-
     emit workerProgramChanged(m_workerProgram);
     emit runningProgramChanged(m_runningProgram);
 }
@@ -83,12 +87,49 @@ void Controller::setStrokeRef(const QVector<double>& newStrokeRef)
 
 QVector<double> Controller::getStrokeRef() const { return m_strokeRef; }
 
+void Controller::setStrokeFb(const QVector<double> &newStrokeFb)
+{
+    if (newStrokeFb == m_strokeFb)
+        return;
+    m_strokeFb = newStrokeFb;
+    emit strokeFbChanged(m_strokeFb);
+}
+
+QVector<double> Controller::getStrokeFb() const { return m_strokeFb; }
+
 void Controller::setWarningState(const bool& newWarningState)
 {
     if (newWarningState == m_warning)
         return;
     m_warning = newWarningState;
     emit warningChanged(m_warning);
+}
+
+uint8_t Controller::getAmpere() const { return m_ampere; }
+
+void Controller::setAmpere(const int &newAmpere)
+{
+    if (newAmpere == m_ampere)
+        return;
+    m_ampere = newAmpere;
+    emit ampereChanged(m_ampere);
+}
+
+bool Controller::getCanReadState() const { return m_canReadState; }
+
+void Controller::setCanReadState(const bool &newCanReadState)
+{
+    if (newCanReadState == m_canReadState)
+        return;
+    m_canReadState = newCanReadState;
+    emit canReadStateChanged(m_canReadState);
+}
+
+void Controller::shutdown()
+{
+    workerThread.quit();
+    workerThread.wait();
+    system("sudo shutdown now");
 }
 
 

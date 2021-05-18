@@ -14,6 +14,7 @@ public:
     InverseKinematics();
 
     void calc_legs(Eigen::Matrix<double, 2, 6>& Input);
+
 private:
     enum pos_vel { POS = 0, VEL = 1 };
     const Eigen::Vector3d a1, a2, a3, a4, a5, a6;

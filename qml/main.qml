@@ -61,6 +61,7 @@ Page {
                 id: oscillatorDelegate
                 text: "Sine Oscillator"
                 width: parent.width
+                height: 60
                 contentItem: Text {
                     text: oscillatorDelegate.text
                     font.italic: true
@@ -83,6 +84,7 @@ Page {
                 id: joystickDelegate
                 text: "Joystick"
                 width: parent.width
+                height: 60
                 contentItem: Text {
                     text: joystickDelegate.text
                     font.italic: true
@@ -105,6 +107,7 @@ Page {
                 id: waveSimDelegate
                 text: "Wave Simulator"
                 width: parent.width
+                height: 60
                 contentItem: Text {
                     text: waveSimDelegate.text
                     font.italic: true
@@ -127,6 +130,7 @@ Page {
                 id: graphsDelegate
                 text: "Setpoint Plot"
                 width: parent.width
+                height: 60
                 contentItem: Text {
                     text: graphsDelegate.text
                     font.italic: true
@@ -149,6 +153,7 @@ Page {
                 id: strokePlotDelegate
                 text: "Stroke Length"
                 width: parent.width
+                height: 60
                 contentItem: Text {
                     text: strokePlotDelegate.text
                     font.italic: true
@@ -171,6 +176,7 @@ Page {
                 id: infoDelegate
                 text: "Info"
                 width: parent.width
+                height: 60
                 contentItem: Text {
                     text: infoDelegate.text
                     font.italic: true

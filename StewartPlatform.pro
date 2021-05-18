@@ -7,6 +7,7 @@ CONFIG +=   c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
+        actuatortest.h \
         canbus.h \
         controller.h \
         imode.h \
@@ -15,9 +16,11 @@ HEADERS += \
         neutral.h \
         oscillator.h \
         park.h \
+        rampneutral.h \
         worker.h
 
 SOURCES += \
+        actuatortest.cpp \
         canbus.cpp \
         controller.cpp \
         inversekinematics.cpp \
@@ -26,6 +29,7 @@ SOURCES += \
         neutral.cpp \
         oscillator.cpp \
         park.cpp \
+        rampneutral.cpp \
         worker.cpp
 
 RESOURCES += qml.qrc

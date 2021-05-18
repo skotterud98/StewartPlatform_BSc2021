@@ -56,28 +56,47 @@ Page {
 
                 }
 
-                var act1 = _controller.strokeRef[0]
-                var act2 = _controller.strokeRef[1]
-                var act3 = _controller.strokeRef[2]
-                var act4 = _controller.strokeRef[3]
-                var act5 = _controller.strokeRef[4]
-                var act6 = _controller.strokeRef[5]
+                var act1 = _controller.activated ? _controller.strokeFb[0] : 0
+                var act2 = _controller.activated ? _controller.strokeFb[1] : 0
+                var act3 = _controller.activated ? _controller.strokeFb[2] : 0
+                var act4 = _controller.activated ? _controller.strokeFb[3] : 0
+                var act5 = _controller.activated ? _controller.strokeFb[4] : 0
+                var act6 = _controller.activated ? _controller.strokeFb[5] : 0
 
-                if (act1 > 89. || act1 < 1. || act2 > 89. || act2 < 1. || act3 > 89. || act3 < 1.
-                        || act4 > 89. || act4 < 1. || act5 > 89. || act5 < 1. || act6 > 89. || act6 < 1.)
-                {
-                    _controller.warning = true
-                }
-                else
-                {
-                    _controller.warning = false
-                }
 
                 stroke.clear()
-                stroke.append("Ref", [act1, act2, act3, act4, act5, act6])
-                stroke.append("Feedback", [0, 0, 0, 0, 0, 0])
+                stroke.append("Setpoint", [ _controller.strokeRef[0], _controller.strokeRef[1], _controller.strokeRef[2],
+                                            _controller.strokeRef[3], _controller.strokeRef[4], _controller.strokeRef[5] ])
+
+                stroke.append("Actual", [ act1, act2, act3, act4, act5, act6 ])
 
             }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

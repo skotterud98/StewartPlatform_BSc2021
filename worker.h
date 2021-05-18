@@ -17,6 +17,7 @@ class Worker : public QObject
     Q_OBJECT
 public:
     explicit Worker(IMode* program, QObject *parent = nullptr);
+    ~Worker();
 
 public slots:
     void execute();
@@ -25,7 +26,10 @@ public slots:
 
 signals:
     void strokeRefChanged(const QVector<double>& newStrokeRef);
+    void strokeFbChanged(const QVector<double>& newStrokeFb);
     void warningChanged(const bool& newWarningState);
+    void ampereChanged(const int& newAmpere);
+    void canReadChanged(const bool& newReadState);
 
 private:
     IMode* m_runningProgram;

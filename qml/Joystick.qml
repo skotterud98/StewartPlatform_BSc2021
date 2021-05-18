@@ -14,10 +14,19 @@ Page {
 
         StatusIndicator {
             id: statusInd
-            x: 700
+            x: 650
             y: 370
             active: true
             color: _controller.runningProgram == "Joystick" ? "green" : "red"
+        }
+
+        Text {
+            id: statusIndText
+            x: 700
+            y: 380
+            text: qsTr("Active")
+            color: "#db6221"
+            font.bold: true
         }
 
         MyComponents.MySlider {

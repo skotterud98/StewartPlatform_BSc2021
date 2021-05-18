@@ -34,12 +34,12 @@ void Oscillator::resetPhase()
 
 void Oscillator::resetFreq()
 {
-    m_surge[Freq] = 0.2;
-    m_sway[Freq] = 0.2;
-    m_heave[Freq] = 0.2;
-    m_roll[Freq] = 0.15;
-    m_pitch[Freq] = 0.15;
-    m_yaw[Freq] = 0.15;
+    m_surge[Freq] = 0.1;
+    m_sway[Freq] = 0.1;
+    m_heave[Freq] = 0.1;
+    m_roll[Freq] = 0.1;
+    m_pitch[Freq] = 0.1;
+    m_yaw[Freq] = 0.1;
 }
 
 
@@ -283,7 +283,7 @@ Eigen::Matrix<double, 2, 6>& Oscillator::sample()
     static double pitch[3]      = { 0., 0., m_pitch[Freq]};
     static double yaw[3]        = { 0., 0., m_yaw[Freq]};
 
-    static double new_K = 0.01;
+    static double new_K = 0.025;
     static double prev_K = 1 - new_K;
 
 
@@ -323,22 +323,22 @@ Eigen::Matrix<double, 2, 6>& Oscillator::sample()
 
 
     // Calculate the six sine waves position ( standard sine formula A*sin(wt + ø)+bias )
-    m_dof(POS, 0) = surge[Amp] * sin(2.*PI * surge[Freq] * m_time + surge[Phase]);
-    m_dof(POS, 1) = sway[Amp] * sin(2.*PI * sway[Freq] * m_time + sway[Phase]);
-    m_dof(POS, 2) = heave[Amp] * sin(2.*PI * heave[Freq] * m_time + heave[Phase]) + m_heaveBias;
+    m_dof(POS, SURGE) = surge[Amp] * sin(2.*PI * surge[Freq] * m_time + surge[Phase]);
+    m_dof(POS, SWAY) = sway[Amp] * sin(2.*PI * sway[Freq] * m_time + sway[Phase]);
+    m_dof(POS, HEAVE) = heave[Amp] * sin(2.*PI * heave[Freq] * m_time + heave[Phase]) + m_heaveBias;
 
-    m_dof(POS, 3) = roll[Amp] * (PI/180.) * sin(2.*PI * roll[Freq] * m_time + roll[Phase]);
-    m_dof(POS, 4) = pitch[Amp] * (PI/180.) * sin(2.*PI * pitch[Freq] * m_time + pitch[Phase]);
-    m_dof(POS, 5) = yaw[Amp] * (PI/180.) * sin(2.*PI * yaw[Freq] * m_time + yaw[Phase]);
+    m_dof(POS, ROLL) = roll[Amp] * (PI/180.) * sin(2.*PI * roll[Freq] * m_time + roll[Phase]);
+    m_dof(POS, PITCH) = pitch[Amp] * (PI/180.) * sin(2.*PI * pitch[Freq] * m_time + pitch[Phase]);
+    m_dof(POS, YAW) = yaw[Amp] * (PI/180.) * sin(2.*PI * yaw[Freq] * m_time + yaw[Phase]);
 
     // Calculate the six sine waves velocity (derivative of sine formula)
-    m_dof(VEL, 0) = surge[Amp] * 2.*PI * surge[Freq] * cos(2*PI * surge[Freq] * m_time + surge[Phase]);
-    m_dof(VEL, 1) = sway[Amp] * 2.*PI * sway[Freq] * cos(2*PI * sway[Freq] * m_time + sway[Phase]);
-    m_dof(VEL, 2) = heave[Amp] * 2.*PI * heave[Freq] * cos(2*PI * heave[Freq] * m_time + heave[Phase]);
+    m_dof(VEL, SURGE) = surge[Amp] * 2.*PI * surge[Freq] * cos(2*PI * surge[Freq] * m_time + surge[Phase]);
+    m_dof(VEL, SWAY) = sway[Amp] * 2.*PI * sway[Freq] * cos(2*PI * sway[Freq] * m_time + sway[Phase]);
+    m_dof(VEL, HEAVE) = heave[Amp] * 2.*PI * heave[Freq] * cos(2*PI * heave[Freq] * m_time + heave[Phase]);
 
-    m_dof(VEL, 3) = roll[Amp] * (PI/180.) * 2.*PI * roll[Freq] * cos(2*PI * roll[Freq] * m_time + roll[Phase]);
-    m_dof(VEL, 4) = pitch[Amp] * (PI/180.) * 2.*PI * pitch[Freq] * cos(2*PI * pitch[Freq] * m_time + pitch[Phase]);
-    m_dof(VEL, 5) = yaw[Amp] * (PI/180.) * 2.*PI * yaw[Freq] * cos(2*PI * yaw[Freq] * m_time + yaw[Phase]);
+    m_dof(VEL, ROLL) = roll[Amp] * (PI/180.) * 2.*PI * roll[Freq] * cos(2*PI * roll[Freq] * m_time + roll[Phase]);
+    m_dof(VEL, PITCH) = pitch[Amp] * (PI/180.) * 2.*PI * pitch[Freq] * cos(2*PI * pitch[Freq] * m_time + pitch[Phase]);
+    m_dof(VEL, YAW) = yaw[Amp] * (PI/180.) * 2.*PI * yaw[Freq] * cos(2*PI * yaw[Freq] * m_time + yaw[Phase]);
 
     // Store amp and phase low pass filter prev-values for next iteration
     for (uint8_t i = 0; i < 2; i++)

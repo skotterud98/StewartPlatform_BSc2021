@@ -1,13 +1,14 @@
-#ifndef NEUTRAL_H
-#define NEUTRAL_H
+#ifndef RAMPNEUTRAL_H
+#define RAMPNEUTRAL_H
 
 #include "imode.h"
 
-class Neutral : public IMode
+class RampNeutral : public IMode
 {
+
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-    Neutral();
+    RampNeutral();
 
     double getInputPos(uint8_t index) override;
     void reset() override;
@@ -15,6 +16,7 @@ public:
 
 private:
     const double m_neutralPosition;
+    double m_heave;
 };
 
-#endif // NEUTRAL_H
+#endif // RAMPNEUTRAL_H

@@ -3,7 +3,7 @@
 
 CANbus::CANbus()
 {
-    if ((this->socket_ = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0)
+    if ((this->socket_ = socket(PF_CAN, SOCK_RAW | SOCK_NONBLOCK, CAN_RAW)) < 0)
     {
         perror("Socket");
     }
@@ -44,7 +44,7 @@ CANbus::~CANbus()
 }
 
 
-float* CANbus::send_data(const double stroke_len[], const double stroke_vel[])
+void CANbus::send_data(const double stroke_len[], const double stroke_vel[])
 {
     static uint16_t out_len[6];
     static uint16_t out_vel[6];
@@ -99,62 +99,114 @@ float* CANbus::send_data(const double stroke_len[], const double stroke_vel[])
 
 
     write(this->socket_, &tx_len1, sizeof(struct can_frame));
-    usleep(1);
+    usleep(500);
     write(this->socket_, &tx_len2, sizeof(struct can_frame));
-    usleep(1);
+    usleep(500);
     write(this->socket_, &tx_vel1, sizeof(struct can_frame));
-    usleep(1);
+    usleep(500);
     write(this->socket_, &tx_vel2, sizeof(struct can_frame));
+}
 
-
-    static float feedback[6] = {0., 0., 0., 0., 0., 0.};
-    /*
-    struct can_frame rx;
-    static uint8_t j = 0;
+bool CANbus::recv_data(double stroke_len[], uint8_t* ampere)
+{
+    struct can_frame rx_frame;
 
     bool msg1 = false;
     bool msg2 = false;
 
-    while(!msg1 && !msg2)
+
+    recv(socket_, &rx_frame, sizeof(struct can_frame), MSG_DONTWAIT);
+
+    uint8_t j = 0;
+
+    if (rx_frame.can_id == 0xF0)
     {
-        if (read(this->_socket, &rx, sizeof(struct can_frame)) != sizeof(struct can_frame))
+        for (uint8_t i = 0; i < 3; i++)
         {
-            perror("Read");
+            uint16_t in_len = rx_frame.data[j] << 8;
+            in_len += rx_frame.data[j + 1];
+
+            stroke_len[i] = (float) in_len / 100000.;
+
+            j += 2;
         }
+        msg1 = true;
+    }
 
+    if (!msg1) return false;
 
-        if (rx.can_id == 0xF0)
+    recv(socket_, &rx_frame, sizeof(struct can_frame), MSG_DONTWAIT);
+
+    if (rx_frame.can_id == 0xF1)
+    {
+        j = 0;
+
+        for (uint8_t i = 3; i < 6; i++)
         {
-            j = 0;
+            uint16_t in_len = rx_frame.data[j] << 8;
+            in_len += rx_frame.data[j + 1];
 
-            for (uint8_t i = 0; i < 3; i++)
-            {
-                uint16_t in_len = rx.data[j] << 8;
-                in_len += rx.data[j + 1];
+            stroke_len[i] = (float) in_len / 100000.;
 
-                feedback[i] = (float) in_len / 100000.;
-
-                j += 2;
-            }
-            msg1 = true;
+            j += 2;
         }
+        *ampere = rx_frame.data[6];
+        msg2 = true;
+    }
 
-        if (rx.can_id == 0xF1)
-        {
-            j = 0;
-
-            for (uint8_t i = 3; i < 6; i++)
-            {
-                uint16_t in_len = rx.data[j] << 8;
-                in_len += rx.data[j + 1];
-
-                feedback[i] = (float) in_len / 100000.;
-
-                j += 2;
-            }
-            msg2 = true;
-        }
-    }*/
-
-    return feedback;
+    return msg1 && msg2;
 }
+
+void CANbus::rx_flush()
+{
+    struct can_frame rx_frame;
+    int num_bytes = 1;
+
+    while (num_bytes > 0)
+    {
+        num_bytes = recv(socket_, &rx_frame, sizeof(struct can_frame), MSG_DONTWAIT);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

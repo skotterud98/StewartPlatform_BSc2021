@@ -27,16 +27,25 @@ Page {
         property double phaseStep: 0.125
 
         property double freqFrom: 0.1
-        property var freqTo: [0.4, 0.4, 0.3, 0.3, 0.3, 0.3]
+        property var freqTo: [0.4, 0.4, 0.25, 0.3, 0.3, 0.3]
         property string freqUnit: "Hz"
         property double freqStep: 0.05
 
         StatusIndicator {
             id: statusInd
-            x: 700
+            x: 650
             y: 370
             active: true
             color: _controller.runningProgram == "Sine Oscillator" ? "green" : "red"
+        }
+
+        Text {
+            id: statusIndText
+            x: 700
+            y: 380
+            text: qsTr("Active")
+            color: "#db6221"
+            font.bold: true
         }
 
         // Amplitude sliders
@@ -275,7 +284,7 @@ Page {
         Text {
             id: warningMsg
             x: 45
-            text: "WARNING: Stroke length out of range"
+            text: "WARNING:  Stroke-length out of range"
             color: "#ff0000"
             font.bold: true
             visible: _controller.warning ? true : false

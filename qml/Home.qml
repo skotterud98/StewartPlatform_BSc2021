@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
+import QtQuick.Dialogs 1.1
 import "Components" as Components
 
 
@@ -43,7 +44,7 @@ Page {
 
         Text {
                 id: selectorLabel
-                text: "Select Program"
+                text: "Select Mode"
                 color: "#db6221"
                 font.bold: true
                 anchors {
@@ -72,7 +73,6 @@ Page {
             onClicked: {
 
                 if (programComboBox.m_program === "Park" && programComboBox.currentText !== "Neutral") { choiceErr.visible = true }
-                else if (programComboBox.m_program !== "Park" && programComboBox.currentText === "Neutral") { /* Pass */ }
                 else if (programComboBox.currentText !== programComboBox.m_program)
                 {
                     programComboBox.m_program = programComboBox.currentText
@@ -101,16 +101,16 @@ Page {
             id: status
             x: 45
             y: 290
-            text: "Status:"
+            text: "Platform Status:"
             color: "#db6221"
             font.bold: true
         }
 
         Text {
             id: activeText
-            x: 130
+            x: 220
             y: 290
-            text: _controller.activated ? "ACTIVATED" : "DEACTIVATED"
+            text: _controller.activated ? "ACTIVE" : "INACTIVE"
             color: _controller.activated ? "#228b22" : "#ff0000"
             font.bold: true
             visible: true
@@ -120,7 +120,7 @@ Page {
             id: program
             x: 45
             y: 330
-            text: "Program:"
+            text: "Mode:"
             color: "#db6221"
             font.bold: true
             visible: true
@@ -128,7 +128,7 @@ Page {
 
         Text {
             id: programText
-            x: 150
+            x: 130
             y: 330
             text: programComboBox.m_program
             color: "#1e90ff"
@@ -140,7 +140,7 @@ Page {
             id: canbusTX
             x: 450
             anchors.verticalCenter: selectorLabel.verticalCenter
-            text: "CAN-bus TX:"
+            text: "CAN-bus Tx:"
             color: "#db6221"
             font.bold: true
             visible: true
@@ -150,11 +150,11 @@ Page {
             id: canbusTxText
             x: 600
             anchors.verticalCenter: selectorLabel.verticalCenter
-            text: _controller.activated ? "TRANSMITTING" : "PENDING"
+            text: _controller.activated ? "TRANSMITTING" : "INACTIVE"
             color: {
                 if (canbusTxText.text === "TRANSMITTING")
                     "#228b22"
-                else if (canbusTxText.text === "PENDING")
+                else if (canbusTxText.text === "INACTIVE")
                     "#ffd700"
             }
 
@@ -166,7 +166,7 @@ Page {
             id: canbusRX
             x: 450
             anchors.verticalCenter: programComboBox.verticalCenter
-            text: "CAN-bus RX:"
+            text: "CAN-bus Rx:"
             color: "#db6221"
             font.bold: true
             visible: true
@@ -176,16 +176,74 @@ Page {
             id: canbusRxText
             x: 600
             anchors.verticalCenter: programComboBox.verticalCenter
-            text: "PENDING"
+            text: _controller.canReadState && _controller.activated ? "RECEIVING" : _controller.activated ? "ERROR" : "PENDING"
             color: {
-                if (canbusRxText.text === "TRANSMITTING")
+                if (canbusRxText.text === "RECEIVING")
                     "#228b22"
                 else if (canbusRxText.text === "PENDING")
                     "#ffd700"
+                else if (canbusRxText.text == "ERROR")
+                    "#ff0000"
             }
 
             font.bold: true
             visible: true
+        }
+
+        Text {
+            id: ampere
+            x: 450
+            anchors.verticalCenter: confirmProgramButton.verticalCenter
+            text: "12V current: "
+            color: "#db6221"
+            font.bold: true
+            visible: true
+        }
+
+        Text {
+            id: ampereText
+            x: 600
+            anchors.verticalCenter: confirmProgramButton.verticalCenter
+            text: _controller.activated ? _controller.ampere / 100 + "  A" : "--- A"
+            color: "#db6221"
+            font.bold: true
+            visible: true
+        }
+
+        Image {
+            id: stewart
+            width: parent.width / 2.3
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                verticalCenter: parent.verticalCenter
+                horizontalCenterOffset: 120
+                verticalCenterOffset: 50
+            }
+            opacity: 0.5
+            fillMode: Image.PreserveAspectFit
+            source: "qrc:/qml/images/uia1.png"
+        }
+
+        Components.MyButton {
+            id: shutdownButton
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                verticalCenter: parent.verticalCenter
+                horizontalCenterOffset: 300
+                verticalCenterOffset: 150
+            }
+            text: "Shutdown"
+            onClicked: shutdownMessage.visible = true
+        }
+
+        MessageDialog {
+            id: shutdownMessage
+            title: "Shutdown"
+            icon: StandardIcon.Question
+            text: programComboBox.m_program === "Park" ? "Are you sure you want to shut off platform?" : "Park actuators!"
+            standardButtons: programComboBox.m_program === "Park" ? StandardButton.No | StandardButton.Yes : StandardButton.Close
+            visible: false
+            onYes: _controller.shutdown()
         }
     }
 }
