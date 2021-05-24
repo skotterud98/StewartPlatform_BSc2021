@@ -14,7 +14,6 @@
 
 #include <QDebug>
 
-
 class CANbus
 {
 public:

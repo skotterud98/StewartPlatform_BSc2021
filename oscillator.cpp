@@ -34,9 +34,9 @@ void Oscillator::resetPhase()
 
 void Oscillator::resetFreq()
 {
-    m_surge[Freq] = 0.1;
-    m_sway[Freq] = 0.1;
-    m_heave[Freq] = 0.1;
+    m_surge[Freq] = 0.2;
+    m_sway[Freq] = 0.2;
+    m_heave[Freq] = 0.15;
     m_roll[Freq] = 0.1;
     m_pitch[Freq] = 0.1;
     m_yaw[Freq] = 0.1;

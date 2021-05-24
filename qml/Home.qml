@@ -21,7 +21,7 @@ Page {
             x: 45
             y: 66
             currentIndex: 0
-            model: ["Park", "Neutral", "Sine Oscillator", "Joystick", "JONSWAP"]
+            model: ["Park", "Neutral", "Sine Oscillator", "Joystick"]
 
             background: Rectangle {
                 id: background
@@ -204,7 +204,17 @@ Page {
             id: ampereText
             x: 600
             anchors.verticalCenter: confirmProgramButton.verticalCenter
-            text: _controller.activated ? _controller.ampere / 100 + "  A" : "--- A"
+            text: {
+                if (_controller.activated)
+                {
+                    if (_controller.ampere > 0)
+                        Math.round(_controller.ampere * (1/51) * 100) / 100  + "  A"
+                    else
+                        "0.00  A"
+                }
+                else
+                    "---  A"
+            }
             color: "#db6221"
             font.bold: true
             visible: true

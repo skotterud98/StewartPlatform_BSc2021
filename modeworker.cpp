@@ -1,18 +1,18 @@
-#include "worker.h"
+#include "modeworker.h"
 
-Worker::Worker(IMode* program, QObject *parent)
+ModeWorker::ModeWorker(IMode* program, QObject *parent)
     : QObject(parent), m_runningProgram(program)
 {
     m_timer = new QTimer(this);
-    connect(m_timer, &QTimer::timeout, this, &Worker::execute);
+    connect(m_timer, &QTimer::timeout, this, &ModeWorker::execute);
 }
 
-Worker::~Worker()
+ModeWorker::~ModeWorker()
 {
     delete m_timer;
 }
 
-void Worker::execute()
+void ModeWorker::execute()
 {
     static uint8_t msgCount = 0;
     static Eigen::Matrix<double, 2, 6> output;
@@ -20,10 +20,10 @@ void Worker::execute()
     static double vel[6] = { 0., 0., 0., 0., 0., 0. };
     static double fb_len[6];
     static uint8_t current;
-    static QVector<double> strokeRef;
-    static QVector<double> strokeFb;
     static uint8_t rxErrCount = 0;
 
+    QVector<double> strokeRef;
+    QVector<double> strokeFb;
 
     bool warn = false;
 
@@ -44,7 +44,7 @@ void Worker::execute()
     m_can.send_data(len, vel);
     usleep(500);
 
-    bool read_succeed = true;
+    bool read_succeed = false;
 
     if (!(read_succeed |= m_can.recv_data(fb_len, &current))) rxErrCount++;
 
@@ -74,13 +74,13 @@ void Worker::execute()
 }
 
 
-void Worker::setWorkerProgram(IMode* newWorkerProgram)
+void ModeWorker::setWorkerProgram(IMode* newWorkerProgram)
 {
     m_runningProgram = newWorkerProgram;
     m_runningProgram->reset();
 }
 
-void Worker::runTimer(const bool& run)
+void ModeWorker::runTimer(const bool& run)
 {
     if(run && !m_timer->isActive()) m_timer->start(10);
     else if (!run && m_timer->isActive()) m_timer->stop();

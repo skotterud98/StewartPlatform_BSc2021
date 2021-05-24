@@ -103,6 +103,7 @@ Page {
                     drawer.close()
                 }
             }
+            /*
             ItemDelegate {
                 id: waveSimDelegate
                 text: "Wave Simulator"
@@ -126,6 +127,7 @@ Page {
                     drawer.close()
                 }
             }
+            */
             ItemDelegate {
                 id: graphsDelegate
                 text: "Setpoint Plot"

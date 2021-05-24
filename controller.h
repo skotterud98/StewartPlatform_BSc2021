@@ -8,15 +8,13 @@
 #include <QString>
 #include <QProcess>
 
-
 #include "imode.h"
 #include "rampneutral.h"
 #include "neutral.h"
 #include "oscillator.h"
-#include "worker.h"
+#include "modeworker.h"
 #include "park.h"
 #include "joystick.h"
-
 
 class Controller : public QObject
 {

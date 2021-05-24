@@ -1,5 +1,5 @@
-#ifndef WORKER_H
-#define WORKER_H
+#ifndef MODEWORKER_H
+#define MODEWORKER_H
 
 #include <QObject>
 #include <QTimer>
@@ -12,12 +12,12 @@
 #include "canbus.h"
 #include "imode.h"
 
-class Worker : public QObject
+class ModeWorker : public QObject
 {
     Q_OBJECT
 public:
-    explicit Worker(IMode* program, QObject *parent = nullptr);
-    ~Worker();
+    explicit ModeWorker(IMode* program, QObject *parent = nullptr);
+    ~ModeWorker();
 
 public slots:
     void execute();
@@ -38,4 +38,4 @@ private:
     InverseKinematics m_ik;
 };
 
-#endif // WORKER_H
+#endif // MODEWORKER_H

@@ -12,18 +12,18 @@ Controller::Controller(Oscillator* oscillator, Joystick* joystick, QObject* pare
     m_workerProgram = &m_park;
     m_runningProgram = "Park";
 
-    Worker* worker = new Worker(m_workerProgram);
+    ModeWorker* worker = new ModeWorker(m_workerProgram);
     worker->moveToThread(&workerThread);
     //connect(&workerThread, &QThread::finished, worker, &QObject::deleteLater);
     workerThread.start();
 
-    connect(worker, &Worker::strokeRefChanged, this, &Controller::setStrokeRef);
-    connect(worker, &Worker::strokeFbChanged, this, &Controller::setStrokeFb);
-    connect(worker, &Worker::warningChanged, this, &Controller::setWarningState);
-    connect(worker, &Worker::ampereChanged, this, &Controller::setAmpere);
-    connect(worker, &Worker::canReadChanged, this, &Controller::setCanReadState);
-    connect(this, &Controller::workerProgramChanged, worker, &Worker::setWorkerProgram);
-    connect(this, &Controller::activatedChanged, worker, &Worker::runTimer);
+    connect(worker, &ModeWorker::strokeRefChanged, this, &Controller::setStrokeRef);
+    connect(worker, &ModeWorker::strokeFbChanged, this, &Controller::setStrokeFb);
+    connect(worker, &ModeWorker::warningChanged, this, &Controller::setWarningState);
+    connect(worker, &ModeWorker::ampereChanged, this, &Controller::setAmpere);
+    connect(worker, &ModeWorker::canReadChanged, this, &Controller::setCanReadState);
+    connect(this, &Controller::workerProgramChanged, worker, &ModeWorker::setWorkerProgram);
+    connect(this, &Controller::activatedChanged, worker, &ModeWorker::runTimer);
 }
 
 Controller::~Controller()

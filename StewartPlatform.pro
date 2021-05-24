@@ -7,30 +7,28 @@ CONFIG +=   c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
-        actuatortest.h \
         canbus.h \
         controller.h \
         imode.h \
         inversekinematics.h \
         joystick.h \
+        modeworker.h \
         neutral.h \
         oscillator.h \
         park.h \
-        rampneutral.h \
-        worker.h
+        rampneutral.h
 
 SOURCES += \
-        actuatortest.cpp \
         canbus.cpp \
         controller.cpp \
         inversekinematics.cpp \
         joystick.cpp \
         main.cpp \
+        modeworker.cpp \
         neutral.cpp \
         oscillator.cpp \
         park.cpp \
-        rampneutral.cpp \
-        worker.cpp
+        rampneutral.cpp
 
 RESOURCES += qml.qrc
 
@@ -42,9 +40,6 @@ QML_DESIGNER_IMPORT_PATH =
 
 INCLUDEPATH +=  /usr/include/eigen3
 
+# Target path on the raspberry pi
 target.path = /home/pi/StewartPlatform/bin
 INSTALLS += target
-
-#qnx: target.path = /tmp/$${TARGET}/bin
-#else: unix:!android: target.path = /opt/$${TARGET}/bin
-#!isEmpty(target.path): INSTALLS += target
