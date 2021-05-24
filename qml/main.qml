@@ -103,31 +103,6 @@ Page {
                     drawer.close()
                 }
             }
-            /*
-            ItemDelegate {
-                id: waveSimDelegate
-                text: "Wave Simulator"
-                width: parent.width
-                height: 60
-                contentItem: Text {
-                    text: waveSimDelegate.text
-                    font.italic: true
-                    font.bold: true
-                    font.pixelSize: 17
-                    color: "#db6221"
-                }
-                background: Rectangle {
-                    anchors.fill: parent
-                    color: waveSimDelegate.down ? "dimgrey" : "#1a1a1a"
-                }
-
-                onClicked: {
-                    if(stackView.currentItem.title !== waveSimDelegate.text)
-                        stackView.push("qrc:/qml/WaveSimulator.qml")
-                    drawer.close()
-                }
-            }
-            */
             ItemDelegate {
                 id: graphsDelegate
                 text: "Setpoint Plot"
