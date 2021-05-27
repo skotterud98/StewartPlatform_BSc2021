@@ -14,7 +14,7 @@ double Neutral::getInputPos(uint8_t index)
 
 void Neutral::reset()
 {
-
+    // Empty body
 }
 
 Eigen::Matrix<double, 2, 6>& Neutral::sample()

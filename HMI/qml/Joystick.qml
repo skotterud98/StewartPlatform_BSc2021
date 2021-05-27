@@ -5,6 +5,9 @@ import QtQuick.Layouts 1.3
 import QtQuick.Extras 1.4
 import "Components" as MyComponents
 
+// Joystick QML object taken from "aaronsnoswell" on GitHub
+// https://github.com/aaronsnoswell/QMLVirtualJoystick?fbclid=IwAR1CwyLd1wGTuJ3gjLTFb5s5LBaEb3n1GItlDEhfWlu6XChkqjMW99Gq1E8
+
 Page {
     width: 800
     height: 430
@@ -19,7 +22,6 @@ Page {
             active: true
             color: _controller.runningProgram == "Joystick" ? "green" : "red"
         }
-
         Text {
             id: statusIndText
             x: 700
@@ -28,21 +30,18 @@ Page {
             color: "#db6221"
             font.bold: true
         }
-
         MyComponents.MySlider {
             id: responseSlider; sliderName: qsTr("RESPONSE"); x: -50; y: parent.height - 265
             from: 0.1; to: 1; stepSize: 0.1; value: _joystick.response; valueVisible: false
 
             onMoved: _joystick.response = responseSlider.value
         }
-
         MyComponents.MySlider {
             id: maxAngleSlider; sliderName: qsTr("RANGE"); x: 100; y: parent.height - 265; sliderUnit: "deg"; from: 1
             to: 20; stepSize: 1; value: _joystick.range
 
             onMoved: _joystick.range = maxAngleSlider.value
         }
-
         Image {
             id: joystick
 
@@ -63,7 +62,6 @@ Page {
                 NumberAnimation { target: thumb.anchors; property: "verticalCenterOffset";
                     to: 0; duration: 200; easing.type: Easing.OutSine }
             }
-
             MouseArea {
                 id: mouse
                 signal joystick_moved(double x, double y);
@@ -72,7 +70,6 @@ Page {
                     _joystick.joyX = x
                     _joystick.joyY = y
                 }
-
                 property real fingerAngle : Math.atan2(mouseX, mouseY)
                 property int mcx : mouseX - width * 0.5
                 property int mcy : mouseY - height * 0.5
@@ -108,7 +105,6 @@ Page {
                         thumb.anchors.verticalCenterOffset = Math.sin(angle) * distanceBound
                     }
 
-                    // Fire the signal to indicate the joystick has moved
                     angle = Math.atan2(signal_y, signal_x)
 
                     if(fingerInBounds) {
@@ -124,8 +120,6 @@ Page {
                     }
                 }
             }
-
-
             Image {
                 id: thumb
                 source: "qrc:/qml/images/joyFinger.png"

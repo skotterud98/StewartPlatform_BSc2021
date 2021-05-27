@@ -38,7 +38,6 @@ Page {
             active: true
             color: _controller.runningProgram == "Sine Oscillator" ? "green" : "red"
         }
-
         Text {
             id: statusIndText
             x: 700
@@ -92,7 +91,6 @@ Page {
             }
         }
 
-
         // Phase sliders
         Rectangle {
             id: phaseSliders
@@ -136,7 +134,6 @@ Page {
                 onMoved: _oscillator.yawPhase = yawSliderPhase.value
             }
         }
-
 
         // Frequency sliders
         Rectangle {
@@ -280,7 +277,6 @@ Page {
             }
         }
 
-
         Text {
             id: warningMsg
             x: 45
@@ -289,7 +285,6 @@ Page {
             font.bold: true
             visible: _controller.warning ? true : false
         }
-
 
         states: [
             State {

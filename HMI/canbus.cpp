@@ -1,6 +1,5 @@
 #include "canbus.h"
 
-
 CANbus::CANbus()
 {
     if ((this->socket_ = socket(PF_CAN, SOCK_RAW | SOCK_NONBLOCK, CAN_RAW)) < 0)
@@ -34,7 +33,6 @@ CANbus::CANbus()
     tx_vel2.can_dlc = 7;
 }
 
-
 CANbus::~CANbus()
 {
     if (close(this->socket_) < 0)
@@ -42,7 +40,6 @@ CANbus::~CANbus()
         perror("Close");
     }
 }
-
 
 void CANbus::send_data(const double stroke_len[], const double stroke_vel[])
 {
@@ -87,7 +84,7 @@ void CANbus::send_data(const double stroke_len[], const double stroke_vel[])
     tx_vel1.data[3] = (uint8_t) out_vel[1];
     tx_vel1.data[4] = (uint8_t)(out_vel[2] >> 8);   // Actuator 3
     tx_vel1.data[5] = (uint8_t) out_vel[2];
-    tx_vel1.data[6] = sign & 0b000111;
+    tx_vel1.data[6] = sign & 0b000111;      // bit mask for the sign of the 3 first actuators
 
     tx_vel2.data[0] = (uint8_t)(out_vel[3] >> 8);   // Actuator 4
     tx_vel2.data[1] = (uint8_t) out_vel[3];
@@ -95,7 +92,7 @@ void CANbus::send_data(const double stroke_len[], const double stroke_vel[])
     tx_vel2.data[3] = (uint8_t) out_vel[4];
     tx_vel2.data[4] = (uint8_t)(out_vel[5] >> 8);   // Actuator 6
     tx_vel2.data[5] = (uint8_t) out_vel[5];
-    tx_vel2.data[6] = sign >> 3;
+    tx_vel2.data[6] = sign >> 3;            // bit shift for the 3 last actuators
 
 
     write(this->socket_, &tx_len1, sizeof(struct can_frame));

@@ -13,7 +13,6 @@
         <file>qml/SineOscillator.qml</file>
         <file>qml/StrokeLength.qml</file>
         <file>qml/SetpointPlot.qml</file>
-        <file>qml/WaveSimulator.qml</file>
         <file>qml/Components/MyButton.qml</file>
         <file>qml/Joystick.qml</file>
         <file>qml/images/joyFinger.png</file>

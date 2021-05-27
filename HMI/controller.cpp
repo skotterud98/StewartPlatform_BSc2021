@@ -12,18 +12,17 @@ Controller::Controller(Oscillator* oscillator, Joystick* joystick, QObject* pare
     m_workerProgram = &m_park;
     m_runningProgram = "Park";
 
-    ModeWorker* worker = new ModeWorker(m_workerProgram);
-    worker->moveToThread(&workerThread);
-    //connect(&workerThread, &QThread::finished, worker, &QObject::deleteLater);
+    ModeWorker* modeworker = new ModeWorker(m_workerProgram);
+    modeworker->moveToThread(&workerThread);
     workerThread.start();
 
-    connect(worker, &ModeWorker::strokeRefChanged, this, &Controller::setStrokeRef);
-    connect(worker, &ModeWorker::strokeFbChanged, this, &Controller::setStrokeFb);
-    connect(worker, &ModeWorker::warningChanged, this, &Controller::setWarningState);
-    connect(worker, &ModeWorker::ampereChanged, this, &Controller::setAmpere);
-    connect(worker, &ModeWorker::canReadChanged, this, &Controller::setCanReadState);
-    connect(this, &Controller::workerProgramChanged, worker, &ModeWorker::setWorkerProgram);
-    connect(this, &Controller::activatedChanged, worker, &ModeWorker::runTimer);
+    connect(modeworker, &ModeWorker::strokeRefChanged, this, &Controller::setStrokeRef);
+    connect(modeworker, &ModeWorker::strokeFbChanged, this, &Controller::setStrokeFb);
+    connect(modeworker, &ModeWorker::warningChanged, this, &Controller::setWarningState);
+    connect(modeworker, &ModeWorker::ampereChanged, this, &Controller::setAmpere);
+    connect(modeworker, &ModeWorker::canReadChanged, this, &Controller::setCanReadState);
+    connect(this, &Controller::workerProgramChanged, modeworker, &ModeWorker::setWorkerProgram);
+    connect(this, &Controller::activatedChanged, modeworker, &ModeWorker::runTimer);
 }
 
 Controller::~Controller()
@@ -61,9 +60,6 @@ void Controller::setProgram(const QString& newProgram)
     emit runningProgramChanged(m_runningProgram);
 }
 
-
-//double Controller::getTime() const { return m_workerProgram->getTime(); }
-
 double Controller::getSurgeOut() const { return m_workerProgram->getInputPos(0) * 1000.; }
 
 double Controller::getSwayOut() const { return m_workerProgram->getInputPos(1) * 1000.; }
@@ -75,7 +71,6 @@ double Controller::getRollOut() const { return m_workerProgram->getInputPos(3) *
 double Controller::getPitchOut() const { return m_workerProgram->getInputPos(4) * (180. / PI); }
 
 double Controller::getYawOut() const { return m_workerProgram->getInputPos(5) * (180. / PI); }
-
 
 void Controller::setStrokeRef(const QVector<double>& newStrokeRef)
 {

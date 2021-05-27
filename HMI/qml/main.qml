@@ -14,7 +14,6 @@ Page {
             anchors.fill: parent
             color: "#1a1a1a"
         }
-
         ToolButton {
             id: toolButton
             text: stackView.depth > 1 ? "\u25C0" : "\u2630"
@@ -24,7 +23,6 @@ Page {
                 color: "#3a3a3a"
                 opacity: 0.8
             }
-
             onClicked: {
                 if (stackView.depth > 1) {
                     stackView.pop()
@@ -33,7 +31,6 @@ Page {
                 }
             }
         }
-
         Label {
             text: stackView.currentItem.title
             font.pixelSize: 25
@@ -43,7 +40,6 @@ Page {
             anchors.centerIn: parent
         }
     }
-
     Drawer {
         id: drawer
         width: mainwindow.width * 0.23
@@ -73,7 +69,6 @@ Page {
                     anchors.fill: parent
                     color: oscillatorDelegate.down ? "dimgrey" : "#1a1a1a"
                 }
-
                 onClicked: {
                     if(stackView.currentItem.title !== oscillatorDelegate.text)
                         stackView.push("qrc:/qml/SineOscillator.qml")
@@ -103,31 +98,6 @@ Page {
                     drawer.close()
                 }
             }
-            /*
-            ItemDelegate {
-                id: waveSimDelegate
-                text: "Wave Simulator"
-                width: parent.width
-                height: 60
-                contentItem: Text {
-                    text: waveSimDelegate.text
-                    font.italic: true
-                    font.bold: true
-                    font.pixelSize: 17
-                    color: "#db6221"
-                }
-                background: Rectangle {
-                    anchors.fill: parent
-                    color: waveSimDelegate.down ? "dimgrey" : "#1a1a1a"
-                }
-
-                onClicked: {
-                    if(stackView.currentItem.title !== waveSimDelegate.text)
-                        stackView.push("qrc:/qml/WaveSimulator.qml")
-                    drawer.close()
-                }
-            }
-            */
             ItemDelegate {
                 id: graphsDelegate
                 text: "Setpoint Plot"

@@ -2,9 +2,7 @@
 #define JOYSTICK_H
 
 #include <QObject>
-
 #include <cmath>
-
 #include "imode.h"
 
 class Joystick : public QObject, public IMode

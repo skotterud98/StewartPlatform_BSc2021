@@ -41,20 +41,17 @@ Page {
                 anchors.verticalCenterOffset: 10
             }
         }
-
         Text {
-                id: selectorLabel
-                text: "Select Mode"
-                color: "#db6221"
-                font.bold: true
-                anchors {
-                    verticalCenter: programComboBox.verticalCenter
-                    horizontalCenter: programComboBox.horizontalCenter
-                    verticalCenterOffset: -45
-                }
-
+            id: selectorLabel
+            text: "Select Mode"
+            color: "#db6221"
+            font.bold: true
+            anchors {
+                verticalCenter: programComboBox.verticalCenter
+                horizontalCenter: programComboBox.horizontalCenter
+                verticalCenterOffset: -45
+            }
         }
-
         Text {
             id: choiceErr
             x: 45
@@ -64,7 +61,6 @@ Page {
             font.bold: true
             visible: false
         }
-
         Components.MyButton {
             id: confirmProgramButton
             x: 45
@@ -81,7 +77,6 @@ Page {
                 }
             }
         }
-
         Components.MyButton {
             id: activateButton
             x: 45
@@ -96,7 +91,6 @@ Page {
             text: "Deactivate"
             onClicked: _controller.activated = false
         }
-
         Text {
             id: status
             x: 45
@@ -105,7 +99,6 @@ Page {
             color: "#db6221"
             font.bold: true
         }
-
         Text {
             id: activeText
             x: 220
@@ -115,7 +108,6 @@ Page {
             font.bold: true
             visible: true
         }
-
         Text {
             id: program
             x: 45
@@ -125,7 +117,6 @@ Page {
             font.bold: true
             visible: true
         }
-
         Text {
             id: programText
             x: 130
@@ -135,7 +126,6 @@ Page {
             font.bold: true
             visible: true
         }
-
         Text {
             id: canbusTX
             x: 450
@@ -145,7 +135,6 @@ Page {
             font.bold: true
             visible: true
         }
-
         Text {
             id: canbusTxText
             x: 600
@@ -161,7 +150,6 @@ Page {
             font.bold: true
             visible: true
         }
-
         Text {
             id: canbusRX
             x: 450
@@ -171,7 +159,6 @@ Page {
             font.bold: true
             visible: true
         }
-
         Text {
             id: canbusRxText
             x: 600
@@ -189,7 +176,6 @@ Page {
             font.bold: true
             visible: true
         }
-
         Text {
             id: ampere
             x: 450
@@ -199,7 +185,6 @@ Page {
             font.bold: true
             visible: true
         }
-
         Text {
             id: ampereText
             x: 600
@@ -219,7 +204,6 @@ Page {
             font.bold: true
             visible: true
         }
-
         Image {
             id: stewart
             width: parent.width / 2.3
@@ -233,7 +217,6 @@ Page {
             fillMode: Image.PreserveAspectFit
             source: "qrc:/qml/images/uia1.png"
         }
-
         Components.MyButton {
             id: shutdownButton
             anchors {
@@ -245,7 +228,6 @@ Page {
             text: "Shutdown"
             onClicked: shutdownMessage.visible = true
         }
-
         MessageDialog {
             id: shutdownMessage
             title: "Shutdown"

@@ -12,7 +12,6 @@ Page {
     MyComponents.BackgroundPage {
         anchors.fill: parent
 
-
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
@@ -30,11 +29,8 @@ Page {
                 backgroundColor: "#1a1a1a"
 
                 property double heaveBias: 48.5
-
             }
         }
-
-
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
@@ -50,11 +46,8 @@ Page {
                 animationOptions: ChartView.NoAnimation
                 antialiasing: true
                 backgroundColor: "#1a1a1a"
-
             }
         }
-
-
         Timer {
             id: timer
             interval: 100
@@ -96,7 +89,6 @@ Page {
                     heave = transChart.createSeries(ChartView.SeriesTypeLine, "Heave")
                 }
 
-
                 if (!roll) {
                     roll = rotChart.createSeries(ChartView.SeriesTypeLine, "Roll")
                     roll.color = "violet"
@@ -128,7 +120,6 @@ Page {
                 roll.append(Math.round(time_ * 10) / 10, Math.round(_controller.rollOut * 10) / 10)
                 pitch.append(Math.round(time_ * 10) / 10, Math.round(_controller.pitchOut * 10) / 10)
                 yaw.append(Math.round(time_ * 10) / 10, Math.round(_controller.yawOut * 10) / 10)
-
 
                 if (Math.round(time_ * 10) / 10 > 5) {
                     transChart.axisX().max = Number(Math.round(time_ * 10) / 10)

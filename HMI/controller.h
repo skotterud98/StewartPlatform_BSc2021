@@ -22,7 +22,7 @@ class Controller : public QObject
     Q_OBJECT
     QThread workerThread;
 
-    //Q_PROPERTY(double time READ getTime)
+    // Setpoint plotting properties
     Q_PROPERTY(double surgeOut READ getSurgeOut)
     Q_PROPERTY(double swayOut READ getSwayOut)
     Q_PROPERTY(double heaveOut READ getHeaveOut)
@@ -30,8 +30,9 @@ class Controller : public QObject
     Q_PROPERTY(double pitchOut READ getPitchOut)
     Q_PROPERTY(double yawOut READ getYawOut)
 
-    Q_PROPERTY(QVector<double> strokeRef READ getStrokeRef NOTIFY strokeRefChanged)
-    Q_PROPERTY(QVector<double> strokeFb READ getStrokeFb NOTIFY strokeFbChanged)
+    // Stroke length plotting properties
+    Q_PROPERTY(QVector<double> strokeRef READ getStrokeRef NOTIFY strokeRefChanged) // reference
+    Q_PROPERTY(QVector<double> strokeFb READ getStrokeFb NOTIFY strokeFbChanged)    // feedback
 
     Q_PROPERTY(bool activated MEMBER m_activated NOTIFY activatedChanged)
     Q_PROPERTY(bool warning MEMBER m_warning NOTIFY warningChanged)

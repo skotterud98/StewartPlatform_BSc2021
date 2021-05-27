@@ -48,7 +48,6 @@ void ModeWorker::execute()
 
     if (!(read_succeed |= m_can.recv_data(fb_len, &current))) rxErrCount++;
 
-
     if (msgCount >= 10)
     {
         for (uint8_t i = 0; i < 6; i++)
@@ -64,7 +63,6 @@ void ModeWorker::execute()
         emit canReadChanged(read_succeed);
         msgCount = 0;
     }
-
 
     if (rxErrCount >= 5)
     {

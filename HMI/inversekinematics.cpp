@@ -23,9 +23,8 @@ InverseKinematics::InverseKinematics() :
     // Minimum leg length (stroke = 0)
     l_min(0.181)
 {
-
+    // Empty body
 }
-
 
 void InverseKinematics::calc_legs(Eigen::Matrix<double, 2, 6>& _input)
 {
@@ -69,7 +68,6 @@ void InverseKinematics::calc_legs(Eigen::Matrix<double, 2, 6>& _input)
     // Total rotation matrix
     R = R_z * R_y * R_x;
 
-
     // Leg vectors
     static Eigen::Vector3d s1, s2, s3, s4, s5, s6;
 
@@ -80,10 +78,8 @@ void InverseKinematics::calc_legs(Eigen::Matrix<double, 2, 6>& _input)
     s5 = p + (R * this->b5) - this->a5;
     s6 = p + (R * this->b6) - this->a6;
 
-
     // Leg lengths (leg vector magnitude)
     static double l1, l2, l3, l4, l5, l6;
-
     l1 = s1.norm();
     l2 = s2.norm();
     l3 = s3.norm();
@@ -100,10 +96,8 @@ void InverseKinematics::calc_legs(Eigen::Matrix<double, 2, 6>& _input)
     d5 = l5 - this->l_min;
     d6 = l6 - this->l_min;
 
-
     // Leg unit vector
     static Eigen::Vector3d e1, e2, e3, e4, e5, e6;
-
     e1 = s1 / l1;
     e2 = s2 / l2;
     e3 = s3 / l3;
@@ -111,10 +105,8 @@ void InverseKinematics::calc_legs(Eigen::Matrix<double, 2, 6>& _input)
     e5 = s5 / l5;
     e6 = s6 / l6;
 
-
     // Jacobian
     static Eigen::Matrix<double, 6, 6> J;
-
     J <<    e1.transpose(), ((R * this->b1).cross(e1)).transpose(),
             e2.transpose(), ((R * this->b2).cross(e2)).transpose(),
             e3.transpose(), ((R * this->b3).cross(e3)).transpose(),
@@ -122,7 +114,7 @@ void InverseKinematics::calc_legs(Eigen::Matrix<double, 2, 6>& _input)
             e5.transpose(), ((R * this->b5).cross(e5)).transpose(),
             e6.transpose(), ((R * this->b6).cross(e6)).transpose();
 
-    // Leg velocity
+    // Stroke velocity
     static Eigen::Matrix<double, 6, 1> d_dot;
     d_dot = J * twist;
 

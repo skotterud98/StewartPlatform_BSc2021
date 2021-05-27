@@ -3,7 +3,6 @@
 Oscillator::Oscillator(QObject *parent)
     : QObject(parent), m_heaveBias(0.0485)
 {
-    // Initial oscillator parameters for amptlitude, phase and frequency
     resetAmp();
     resetPhase();
     resetFreq();
@@ -50,12 +49,6 @@ double Oscillator::getInputPos(uint8_t index)
     return m_dof(POS, index);
 }
 
-/*
-double Oscillator::getTime()
-{
-    return m_time;
-}
-*/
 void Oscillator::reset()
 {
     resetAmp();
@@ -64,7 +57,6 @@ void Oscillator::reset()
     m_time = 0.;
     m_run = true;
 }
-
 
 /* ################################# Amplitude Sliders ##########################################*/
 
@@ -254,7 +246,6 @@ void Oscillator::setYawFreq(const double &sliderVal)
     emit yawFreqChanged(m_yaw[Freq]);
 }
 
-
 bool Oscillator::getRun() const { return m_run; }
 
 void Oscillator::setRun(const bool &switchState)
@@ -286,7 +277,7 @@ Eigen::Matrix<double, 2, 6>& Oscillator::sample()
     static double new_K = 0.025;
     static double prev_K = 1 - new_K;
 
-
+    // Wait for zero-pint crossing before the new frequency is valid
     if (surge[Amp] <= 0.0005 || (m_surge[Freq] != surge[Freq] && fmod(m_time, 1./surge[Freq]) <= 0.01 && fmod(m_time, 1./m_surge[Freq]) <= 0.01))
         surge[Freq] = m_surge[Freq];
 
@@ -321,7 +312,6 @@ Eigen::Matrix<double, 2, 6>& Oscillator::sample()
     pitch[Phase] = new_K * m_pitch[Phase] + prev_K * pitchPrev[Phase];
     yaw[Phase] = new_K * m_yaw[Phase] + prev_K * yawPrev[Phase];
 
-
     // Calculate the six sine waves position ( standard sine formula A*sin(wt + ø)+bias )
     m_dof(POS, SURGE) = surge[Amp] * sin(2.*PI * surge[Freq] * m_time + surge[Phase]);
     m_dof(POS, SWAY) = sway[Amp] * sin(2.*PI * sway[Freq] * m_time + sway[Phase]);
@@ -340,7 +330,7 @@ Eigen::Matrix<double, 2, 6>& Oscillator::sample()
     m_dof(VEL, PITCH) = pitch[Amp] * (PI/180.) * 2.*PI * pitch[Freq] * cos(2*PI * pitch[Freq] * m_time + pitch[Phase]);
     m_dof(VEL, YAW) = yaw[Amp] * (PI/180.) * 2.*PI * yaw[Freq] * cos(2*PI * yaw[Freq] * m_time + yaw[Phase]);
 
-    // Store amp and phase low pass filter prev-values for next iteration
+    // Store amp and phase low pass filter prev-values for next iteration in LP-filter
     for (uint8_t i = 0; i < 2; i++)
     {
         surgePrev[i] = surge[i];
@@ -351,12 +341,11 @@ Eigen::Matrix<double, 2, 6>& Oscillator::sample()
         yawPrev[i] = yaw[i];
     }
 
-    if (m_run && !m_zeroAmpIn())
+    if (m_run && !m_zeroAmpIn())    // Stop iterating m_time if run switch is false
         m_time+= 0.01;
 
     return m_dof;
 }
-
 
 bool Oscillator::m_zeroAmpIn()
 {
